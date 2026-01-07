@@ -129,11 +129,42 @@
         }
 
         .logo {
-            font-weight: 600;
-            font-size: 1.25rem;
-            letter-spacing: -0.5px;
+            font-weight: 700;
+            font-size: 1.5rem;
+            letter-spacing: -1px;
             color: var(--text-primary);
-            transition: color 0.3s ease;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            cursor: pointer;
+        }
+
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, var(--accent) 0%, #5856d6 100%);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-size: 1.25rem;
+            color: white;
+            box-shadow: 0 4px 12px rgba(0, 113, 227, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .logo:hover .logo-icon {
+            transform: rotate(-5deg) scale(1.05);
+            box-shadow: 0 6px 20px rgba(0, 113, 227, 0.3);
+        }
+
+        .logo-text {
+            background: linear-gradient(135deg, var(--text-primary) 0%, var(--accent) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
         .nav-links {
@@ -873,21 +904,574 @@
         .project-link {
             display: inline-flex;
             align-items: center;
+            justify-content: center;
             gap: 0.5rem;
             color: var(--accent);
             text-decoration: none;
             font-weight: 600;
             font-size: 0.9rem;
+            padding: 0.75rem 1.5rem;
+            border-radius: 12px;
+            border: 2px solid var(--accent);
             transition: all 0.3s ease;
+            background: transparent;
         }
 
         .project-link:hover {
-            gap: 0.75rem;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0, 113, 227, 0.2);
         }
+
+        .project-link.live-demo {
+            background: var(--accent);
+            color: white;
+            border-color: var(--accent);
+        }
+
+        .project-link.live-demo:hover {
+            background: var(--accent-hover);
+            border-color: var(--accent-hover);
+            box-shadow: 0 8px 24px rgba(0, 113, 227, 0.3);
+        }
+
+        [data-theme="dark"] .project-link.live-demo {
+            background: var(--accent);
+            color: white;
+        }
+
+        [data-theme="dark"] .project-link.live-demo:hover {
+            background: var(--accent-hover);
+        }
+
+        /* Interactive Section */
+        .interactive-section {
+            padding: 8rem 4rem;
+            background: var(--bg-secondary);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .interactive-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .interactive-card {
+            background: var(--card-bg);
+            border-radius: 24px;
+            padding: 3rem 2rem;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 1px solid var(--border);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .interactive-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--accent) 0%, #5856d6 100%);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .interactive-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 20px 60px var(--shadow);
+            border-color: var(--accent);
+        }
+
+        .interactive-card:active {
+            transform: translateY(-5px) scale(0.98);
+        }
+
+        .interactive-icon {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            display: inline-block;
+            transition: all 0.4s ease;
+            position: relative;
+            z-index: 1;
+        }
+
+        .interactive-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .interactive-card p {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .interactive-card.active::before {
+            opacity: 0.1;
+        }
+
+        .interactive-card.active {
+            border-color: var(--accent);
+        }
+
+        .interactive-card.rotating .interactive-icon {
+            animation: spin360 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .interactive-card.bouncing .interactive-icon {
+            animation: bounceAnim 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        @keyframes spin360 {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        @keyframes bounceAnim {
+            0%, 100% { transform: translateY(0); }
+            25% { transform: translateY(-30px); }
+            50% { transform: translateY(-15px); }
+            75% { transform: translateY(-20px); }
+        }
+
+        .counter-display {
+            font-size: 3.5rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--accent) 0%, #5856d6 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+
+.tech-tabs {
+    display: flex;
+    gap: 1rem;
+    margin: 3rem 0 2rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.tech-tab {
+    padding: 1rem 2rem;
+    background: var(--card-bg);
+    border: 2px solid var(--border);
+    border-radius: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    color: var(--text-primary);
+    font-size: 1rem;
+}
+
+.tech-tab:hover {
+    border-color: var(--accent);
+    transform: translateY(-2px);
+}
+
+.tech-tab.active {
+    background: var(--accent);
+    color: white;
+    border-color: var(--accent);
+    box-shadow: 0 8px 20px rgba(0, 113, 227, 0.3);
+}
+
+.tech-panel {
+    display: none;
+    animation: fadeIn 0.5s ease;
+}
+
+.tech-panel.active {
+    display: block;
+}
+
+@keyframes fadeIn {
+    from {opacity: 0; transform: translateY(20px);}
+    to {opacity: 1; transform: translateY(0);}
+}
+
+/* Terminal Styles */
+.terminal-window {
+    background: #1e1e1e;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.terminal-header {
+    background: #2d2d2d;
+    padding: 0.75rem 1rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.terminal-buttons {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.terminal-btn {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+}
+
+.terminal-btn.close {background: #ff5f56;}
+.terminal-btn.minimize {background: #ffbd2e;}
+.terminal-btn.maximize {background: #27c93f;}
+
+.terminal-title {
+    color: #a0a0a0;
+    font-size: 0.875rem;
+    font-family: 'Courier New', monospace;
+}
+
+.terminal-body {
+    padding: 1.5rem;
+    min-height: 400px;
+    max-height: 500px;
+    overflow-y: auto;
+}
+
+.terminal-output {
+    font-family: 'Courier New', monospace;
+    color: #00ff00;
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+.terminal-line {
+    margin-bottom: 0.5rem;
+}
+
+.terminal-line.prompt {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+}
+
+.prompt-symbol {
+    color: #0a84ff;
+    font-weight: bold;
+}
+
+.terminal-cursor {
+    display: inline-block;
+    width: 8px;
+    height: 18px;
+    background: #00ff00;
+    animation: blink 1s infinite;
+    margin-left: 4px;
+}
+
+@keyframes blink {
+    0%, 49% {opacity: 1;}
+    50%, 100% {opacity: 0;}
+}
+
+.terminal-commands {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    margin-top: 1.5rem;
+    padding-top: 1rem;
+    border-top: 1px solid #3d3d3d;
+}
+
+.cmd-btn {
+    padding: 0.5rem 1rem;
+    background: #0a84ff;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-family: 'Courier New', monospace;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 0.875rem;
+}
+
+.cmd-btn:hover {
+    background: #409cff;
+    transform: translateY(-2px);
+}
+
+/* AWS Architecture Styles */
+.architecture-canvas {
+    background: var(--card-bg);
+    border: 2px solid var(--border);
+    border-radius: 16px;
+    padding: 2rem;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.arch-title {
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 2rem;
+    color: var(--text-primary);
+}
+
+.arch-diagram {
+    width: 100%;
+    height: auto;
+    max-height: 500px;
+}
+
+.arch-node {
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.arch-node:hover {
+    transform: scale(1.1);
+}
+
+.arch-node text {
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.arch-legend {
+    margin-top: 2rem;
+    padding-top: 2rem;
+    border-top: 2px solid var(--border);
+}
+
+.arch-stats {
+    display: flex;
+    justify-content: space-around;
+    gap: 2rem;
+}
+
+.stat-item {
+    text-align: center;
+}
+
+.stat-value {
+    display: block;
+    font-size: 2rem;
+    font-weight: 800;
+    background: linear-gradient(135deg, var(--accent) 0%, #5856d6 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.stat-label {
+    display: block;
+    color: var(--text-secondary);
+    font-size: 0.875rem;
+    margin-top: 0.5rem;
+}
+
+/* Pipeline Styles */
+.pipeline-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    background: var(--card-bg);
+    border: 2px solid var(--border);
+    border-radius: 16px;
+    padding: 2rem;
+}
+
+.pipeline-title {
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 2rem;
+    color: var(--text-primary);
+}
+
+.pipeline-stages {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 2rem 0;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    padding: 1rem 0;
+}
+
+.pipeline-stage {
+    text-align: center;
+    min-width: 120px;
+    padding: 1.5rem 1rem;
+    background: var(--bg-secondary);
+    border: 2px solid var(--border);
+    border-radius: 12px;
+    transition: all 0.4s ease;
+}
+
+.pipeline-stage.running {
+    border-color: #ff9500;
+    background: rgba(255, 149, 0, 0.1);
+    animation: pulse 1.5s infinite;
+}
+
+.pipeline-stage.success {
+    border-color: #30d158;
+    background: rgba(48, 209, 88, 0.1);
+}
+
+.pipeline-stage.failed {
+    border-color: #ff3b30;
+    background: rgba(255, 59, 48, 0.1);
+}
+
+@keyframes pulse {
+    0%, 100% {transform: scale(1); box-shadow: 0 0 0 0 rgba(255, 149, 0, 0.7);}
+    50% {transform: scale(1.05); box-shadow: 0 0 0 10px rgba(255, 149, 0, 0);}
+}
+
+.stage-icon {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.stage-name {
+    font-weight: 600;
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+    color: var(--text-primary);
+}
+
+.stage-status {
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    font-weight: 600;
+}
+
+.pipeline-arrow {
+    font-size: 1.5rem;
+    color: var(--text-secondary);
+    margin: 0 0.5rem;
+}
+
+.run-pipeline-btn {
+    display: block;
+    margin: 2rem auto;
+    padding: 1rem 3rem;
+    background: linear-gradient(135deg, var(--accent) 0%, #5856d6 100%);
+    color: white;
+    border: none;
+    border-radius: 12px;
+    font-size: 1.1rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.run-pipeline-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 30px rgba(0, 113, 227, 0.4);
+}
+
+.run-pipeline-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.pipeline-logs {
+    margin-top: 2rem;
+    background: #1e1e1e;
+    border-radius: 8px;
+    padding: 1.5rem;
+    font-family: 'Courier New', monospace;
+    font-size: 0.85rem;
+    color: #00ff00;
+    max-height: 200px;
+    overflow-y: auto;
+    min-height: 100px;
+}
+
+/* Skill Graph Styles */
+.skill-graph-container {
+    background: var(--card-bg);
+    border: 2px solid var(--border);
+    border-radius: 16px;
+    padding: 2rem;
+    max-width: 900px;
+    margin: 0 auto;
+    position: relative;
+}
+
+#skillGraphCanvas {
+    width: 100%;
+    height: 500px;
+    display: block;
+}
+
+.skill-legend {
+    display: flex;
+    gap: 2rem;
+    justify-content: center;
+    margin-top: 2rem;
+    flex-wrap: wrap;
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+}
+
+.legend-color {
+    width: 20px;
+    height: 20px;
+    border-radius: 4px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .tech-tabs {
+        gap: 0.5rem;
+    }
+
+    .tech-tab {
+        padding: 0.75rem 1rem;
+        font-size: 0.9rem;
+    }
+
+    .terminal-body {
+        min-height: 300px;
+    }
+
+    .pipeline-stages {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .pipeline-arrow {
+        transform: rotate(90deg);
+        margin: 0.5rem 0;
+    }
+
+    .arch-stats {
+        flex-direction: column;
+        gap: 1rem;
+    }
+}
 
         /* Contact Section */
         .contact {
-            background: var(--bg-secondary);
+            background: var(--bg-primary);
             padding: 10rem 4rem;
         }
 
@@ -1207,12 +1791,15 @@
     <!-- Navigation -->
     <nav class="glass">
         <div class="nav-content">
-            <div class="logo">Hemant Yadav</div>
+            <div class="logo">
+                <div class="logo-icon">HY</div>
+                <span class="logo-text">Hemant Yadav</span>
+            </div>
             <ul class="nav-links">
                 <li><a href="#home">Home</a></li>
                 <li><a href="#skills">Skills</a></li>
-                <li><a href="#experience">Experience</a></li>
                 <li><a href="#projects">Projects</a></li>
+                <li><a href="#interactive">Interactive</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
             <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
@@ -1428,10 +2015,10 @@
                             <span class="tech-badge">Razorpay</span>
                         </div>
                         <div style="display: flex; gap: 1rem; margin-top: 1rem;">
-                            <a href="https://github.com/Dev-HNY/kartavya-frontend" target="_blank" rel="noopener noreferrer" class="project-link" style="flex: 1; text-align: center;">
+                            <a href="https://github.com/Dev-HNY/kartavya-frontend" target="_blank" rel="noopener noreferrer" class="project-link" style="flex: 1;">
                                 💻 GitHub
                             </a>
-                            <a href="http://kartavya-website-test.onrender.com/" target="_blank" rel="noopener noreferrer" class="project-link" style="flex: 1; text-align: center; background: var(--accent); color: white;">
+                            <a href="http://kartavya-website-test.onrender.com/" target="_blank" rel="noopener noreferrer" class="project-link live-demo" style="flex: 1;">
                                 🚀 Live Demo
                             </a>
                         </div>
@@ -1455,10 +2042,10 @@
                             <span class="tech-badge">JWT</span>
                         </div>
                         <div style="display: flex; gap: 1rem; margin-top: 1rem;">
-                            <a href="https://github.com/Dev-HNY/college-connect-frontend" target="_blank" rel="noopener noreferrer" class="project-link" style="flex: 1; text-align: center;">
+                            <a href="https://github.com/Dev-HNY/college-connect-frontend" target="_blank" rel="noopener noreferrer" class="project-link" style="flex: 1;">
                                 💻 GitHub
                             </a>
-                            <a href="https://college-connect-9row.onrender.com/" target="_blank" rel="noopener noreferrer" class="project-link" style="flex: 1; text-align: center; background: var(--accent); color: white;">
+                            <a href="https://college-connect-9row.onrender.com/" target="_blank" rel="noopener noreferrer" class="project-link live-demo" style="flex: 1;">
                                 🚀 Live Demo
                             </a>
                         </div>
@@ -1482,10 +2069,10 @@
                             <span class="tech-badge">Express</span>
                         </div>
                         <div style="display: flex; gap: 1rem; margin-top: 1rem;">
-                            <a href="https://github.com/Dev-HNY/SeniorCounsel" target="_blank" rel="noopener noreferrer" class="project-link" style="flex: 1; text-align: center;">
+                            <a href="https://github.com/Dev-HNY/SeniorCounsel" target="_blank" rel="noopener noreferrer" class="project-link" style="flex: 1;">
                                 💻 GitHub
                             </a>
-                            <a href="https://seniorcounsel.onrender.com/" target="_blank" rel="noopener noreferrer" class="project-link" style="flex: 1; text-align: center; background: var(--accent); color: white;">
+                            <a href="https://seniorcounsel.onrender.com/" target="_blank" rel="noopener noreferrer" class="project-link live-demo" style="flex: 1;">
                                 🚀 Live Demo
                             </a>
                         </div>
@@ -1495,7 +2082,207 @@
         </div>
     </section>
 
-    <!-- Contact Section -->
+<!-- Interactive Tech Showcase -->
+    <section class="interactive-section" id="interactive">
+        <div class="section-container">
+            <div class="section-header">
+                <div class="section-tag">Interactive Showcase</div>
+                <h2 class="section-title">Experience My Full-Stack Expertise</h2>
+                <p class="section-description">
+                    Explore live demonstrations of development, DevOps, and cloud architecture capabilities
+                </p>
+            </div>
+
+            <!-- Tab Navigation -->
+            <div class="tech-tabs">
+                <button class="tech-tab active" data-tab="terminal">💻 Live Coding</button>
+                <button class="tech-tab" data-tab="architecture">☁️ AWS Architecture</button>
+                <button class="tech-tab" data-tab="pipeline">🔄 CI/CD Pipeline</button>
+                <button class="tech-tab" data-tab="skillgraph">📊 Skill Graph</button>
+            </div>
+
+            <!-- Panel 1: Terminal Simulator -->
+            <div class="tech-panel active" id="terminal-panel">
+                <div class="terminal-window">
+                    <div class="terminal-header">
+                        <div class="terminal-buttons">
+                            <span class="terminal-btn close"></span>
+                            <span class="terminal-btn minimize"></span>
+                            <span class="terminal-btn maximize"></span>
+                        </div>
+                        <div class="terminal-title">hemant@dev-stack:~$</div>
+                    </div>
+                    <div class="terminal-body">
+                        <div class="terminal-output" id="terminalOutput">
+                            <div class="terminal-line">Welcome to Hemant's Development Environment</div>
+                            <div class="terminal-line">Type a command or click a button below...</div>
+                            <div class="terminal-line"></div>
+                            <div class="terminal-line prompt">
+                                <span class="prompt-symbol">$</span>
+                                <span class="terminal-cursor">_</span>
+                            </div>
+                        </div>
+                        <div class="terminal-commands">
+                            <button class="cmd-btn" data-cmd="help">help</button>
+                            <button class="cmd-btn" data-cmd="skills">skills</button>
+                            <button class="cmd-btn" data-cmd="projects">projects</button>
+                            <button class="cmd-btn" data-cmd="deploy">deploy</button>
+                            <button class="cmd-btn" data-cmd="clear">clear</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Panel 2: AWS Architecture -->
+            <div class="tech-panel" id="architecture-panel">
+                <div class="architecture-canvas">
+                    <div class="arch-title">Scalable Production Architecture</div>
+                    <svg class="arch-diagram" viewBox="0 0 800 500">
+                        <!-- Users -->
+                        <g class="arch-node" data-service="users">
+                            <circle cx="100" cy="250" r="30" fill="#0071e3" opacity="0.2"/>
+                            <text x="100" y="255" text-anchor="middle" fill="var(--text-primary)" font-size="28">👥</text>
+                            <text x="100" y="295" text-anchor="middle" fill="var(--text-secondary)" font-size="12">Users</text>
+                        </g>
+
+                        <!-- CloudFront CDN -->
+                        <g class="arch-node" data-service="cloudfront">
+                            <rect x="170" y="220" width="60" height="60" rx="8" fill="#FF9900" opacity="0.2"/>
+                            <text x="200" y="255" text-anchor="middle" fill="var(--text-primary)" font-size="24">☁️</text>
+                            <text x="200" y="295" text-anchor="middle" fill="var(--text-secondary)" font-size="10">CloudFront</text>
+                        </g>
+
+                        <!-- Application Load Balancer -->
+                        <g class="arch-node" data-service="alb">
+                            <rect x="280" y="220" width="60" height="60" rx="8" fill="#FF9900" opacity="0.2"/>
+                            <text x="310" y="255" text-anchor="middle" fill="var(--text-primary)" font-size="24">⚖️</text>
+                            <text x="310" y="295" text-anchor="middle" fill="var(--text-secondary)" font-size="11">ALB</text>
+                        </g>
+
+                        <!-- ECS Fargate -->
+                        <g class="arch-node" data-service="ecs">
+                            <rect x="390" y="150" width="80" height="80" rx="8" fill="#FF9900" opacity="0.2"/>
+                            <text x="430" y="195" text-anchor="middle" fill="var(--text-primary)" font-size="32">🐳</text>
+                            <text x="430" y="245" text-anchor="middle" fill="var(--text-secondary)" font-size="10">ECS Fargate</text>
+                        </g>
+
+                        <!-- RDS Database -->
+                        <g class="arch-node" data-service="rds">
+                            <rect x="390" y="270" width="80" height="80" rx="8" fill="#527FFF" opacity="0.2"/>
+                            <text x="430" y="315" text-anchor="middle" fill="var(--text-primary)" font-size="32">💾</text>
+                            <text x="430" y="365" text-anchor="middle" fill="var(--text-secondary)" font-size="11">RDS</text>
+                        </g>
+
+                        <!-- S3 Storage -->
+                        <g class="arch-node" data-service="s3">
+                            <rect x="530" y="150" width="70" height="70" rx="8" fill="#569A31" opacity="0.2"/>
+                            <text x="565" y="190" text-anchor="middle" fill="var(--text-primary)" font-size="28">📦</text>
+                            <text x="565" y="235" text-anchor="middle" fill="var(--text-secondary)" font-size="11">S3</text>
+                        </g>
+
+                        <!-- ElastiCache Redis -->
+                        <g class="arch-node" data-service="redis">
+                            <rect x="530" y="270" width="70" height="70" rx="8" fill="#C925D1" opacity="0.2"/>
+                            <text x="565" y="310" text-anchor="middle" fill="var(--text-primary)" font-size="28">⚡</text>
+                            <text x="565" y="355" text-anchor="middle" fill="var(--text-secondary)" font-size="10">ElastiCache</text>
+                        </g>
+
+                        <!-- Lambda Functions -->
+                        <g class="arch-node" data-service="lambda">
+                            <rect x="650" y="210" width="70" height="70" rx="8" fill="#FF9900" opacity="0.2"/>
+                            <text x="685" y="250" text-anchor="middle" fill="var(--text-primary)" font-size="32">λ</text>
+                            <text x="685" y="295" text-anchor="middle" fill="var(--text-secondary)" font-size="10">Lambda</text>
+                        </g>
+                    </svg>
+
+                    <div class="arch-legend">
+                        <div class="arch-stats">
+                            <div class="stat-item">
+                                <span class="stat-value">99.99%</span>
+                                <span class="stat-label">Uptime SLA</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-value">&lt;100ms</span>
+                                <span class="stat-label">Response Time</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-value">10K+</span>
+                                <span class="stat-label">Requests/sec</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-value">Auto</span>
+                                <span class="stat-label">Scaling</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Panel 3: CI/CD Pipeline -->
+            <div class="tech-panel" id="pipeline-panel">
+                <div class="pipeline-container">
+                    <div class="pipeline-title">Automated DevOps Pipeline</div>
+                    <div class="pipeline-stages">
+                        <div class="pipeline-stage" data-stage="1">
+                            <div class="stage-icon">📝</div>
+                            <div class="stage-name">Code Commit</div>
+                            <div class="stage-status">Ready</div>
+                        </div>
+                        <div class="pipeline-arrow">→</div>
+                        <div class="pipeline-stage" data-stage="2">
+                            <div class="stage-icon">🔨</div>
+                            <div class="stage-name">Build</div>
+                            <div class="stage-status">Pending</div>
+                        </div>
+                        <div class="pipeline-arrow">→</div>
+                        <div class="pipeline-stage" data-stage="3">
+                            <div class="stage-icon">🧪</div>
+                            <div class="stage-name">Test</div>
+                            <div class="stage-status">Pending</div>
+                        </div>
+                        <div class="pipeline-arrow">→</div>
+                        <div class="pipeline-stage" data-stage="4">
+                            <div class="stage-icon">🔍</div>
+                            <div class="stage-name">Security Scan</div>
+                            <div class="stage-status">Pending</div>
+                        </div>
+                        <div class="pipeline-arrow">→</div>
+                        <div class="pipeline-stage" data-stage="5">
+                            <div class="stage-icon">🚀</div>
+                            <div class="stage-name">Deploy</div>
+                            <div class="stage-status">Pending</div>
+                        </div>
+                    </div>
+                    <button class="run-pipeline-btn" id="runPipeline">▶ Run Pipeline</button>
+                    <div class="pipeline-logs" id="pipelineLogs"></div>
+                </div>
+            </div>
+
+            <!-- Panel 4: Skill Graph -->
+            <div class="tech-panel" id="skillgraph-panel">
+                <div class="skill-graph-container">
+                    <canvas id="skillGraphCanvas"></canvas>
+                    <div class="skill-legend">
+                        <div class="legend-item">
+                            <span class="legend-color" style="background: #61DAFB;"></span> Frontend
+                        </div>
+                        <div class="legend-item">
+                            <span class="legend-color" style="background: #339933;"></span> Backend
+                        </div>
+                        <div class="legend-item">
+                            <span class="legend-color" style="background: #FF9900;"></span> DevOps/Cloud
+                        </div>
+                        <div class="legend-item">
+                            <span class="legend-color" style="background: #47A248;"></span> Database
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+        <!-- Contact Section -->
     <section class="contact" id="contact">
         <div class="section-container">
             <div class="contact-content">
@@ -1564,10 +2351,9 @@
                 <h3>Hemant Yadav</h3>
                 <p>Full Stack Developer & Tech Lead crafting innovative digital solutions for tomorrow's challenges.</p>
                 <div class="social-links">
-                    <a href="#" class="social-link">💼</a>
-                    <a href="#" class="social-link">💻</a>
-                    <a href="#" class="social-link">📧</a>
-                    <a href="#" class="social-link">🐦</a>
+                    <a href="https://www.linkedin.com/in/hemant-yadav-905151226/" target="_blank" rel="noopener noreferrer" class="social-link" title="LinkedIn">💼</a>
+                    <a href="https://github.com/Dev-HNY" target="_blank" rel="noopener noreferrer" class="social-link" title="GitHub">💻</a>
+                    <a href="mailto:hnyadav6271@gmail.com" class="social-link" title="Email">📧</a>
                 </div>
             </div>
             <div class="footer-section">
@@ -1582,9 +2368,8 @@
             <div class="footer-section">
                 <h4>Connect</h4>
                 <ul class="footer-links">
-                    <li><a href="#">LinkedIn</a></li>
-                    <li><a href="#">GitHub</a></li>
-                    <li><a href="#">Twitter</a></li>
+                    <li><a href="https://www.linkedin.com/in/hemant-yadav-905151226/" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+                    <li><a href="https://github.com/Dev-HNY" target="_blank" rel="noopener noreferrer">GitHub</a></li>
                     <li><a href="mailto:hnyadav6271@gmail.com">Email</a></li>
                 </ul>
             </div>
@@ -1680,21 +2465,26 @@
             });
         });
 
-        // Intersection Observer for Animations
+        // Bidirectional Intersection Observer for Animations
         const observerOptions = {
             threshold: 0.15,
-            rootMargin: '0px 0px -80px 0px'
+            rootMargin: '0px 0px -50px 0px'
         };
 
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('visible');
+                } else {
+                    // Remove visible class when scrolling up past the element
+                    if (entry.boundingClientRect.top > window.innerHeight) {
+                        entry.target.classList.remove('visible');
+                    }
                 }
             });
         }, observerOptions);
 
-        document.querySelectorAll('.stat-card, .skill-card, .timeline-item, .project-card').forEach(el => {
+        document.querySelectorAll('.stat-card, .skill-card, .timeline-item, .project-card, .contact-method, .section-header, .interactive-card').forEach(el => {
             observer.observe(el);
         });
 
@@ -1803,7 +2593,483 @@
             card.style.transitionDelay = `${index * 0.08}s`;
         });
 
-        // Form Submission
+        // Interactive Cards
+        const interactiveCards = document.querySelectorAll('.interactive-card');
+        const colors = ['#0071e3', '#5856d6', '#ff2d55', '#ff9500', '#30d158', '#64d2ff'];
+        let colorIndex = 0;
+        let clickCount = 0;
+
+        interactiveCards.forEach(card => {
+            card.addEventListener('click', function() {
+                const color = this.getAttribute('data-color');
+                const animation = this.getAttribute('data-animation');
+
+                // Color splash card
+                if (color) {
+                    this.classList.add('active');
+                    const currentColor = colors[colorIndex % colors.length];
+                    this.style.setProperty('--accent', currentColor);
+                    this.style.borderColor = currentColor;
+                    this.querySelector('.interactive-icon').style.filter = `drop-shadow(0 0 20px ${currentColor})`;
+
+                    colorIndex++;
+
+                    setTimeout(() => {
+                        this.classList.remove('active');
+                        this.style.filter = '';
+                        this.querySelector('.interactive-icon').style.filter = '';
+                    }, 400);
+                }
+
+                // Rotation card
+                if (animation === 'rotate') {
+                    this.classList.add('rotating');
+                    setTimeout(() => {
+                        this.classList.remove('rotating');
+                    }, 600);
+                }
+
+                // Bounce card
+                if (animation === 'bounce') {
+                    this.classList.add('bouncing');
+                    setTimeout(() => {
+                        this.classList.remove('bouncing');
+                    }, 600);
+                }
+
+                // Counter card
+                if (this.classList.contains('counter-card')) {
+                    clickCount++;
+                    const display = this.querySelector('.counter-display');
+                    display.textContent = clickCount;
+                    display.style.transform = 'scale(1.2)';
+                    setTimeout(() => {
+                        display.style.transform = 'scale(1)';
+                    }, 200);
+                }
+            });
+        });
+
+        // Add parallax effect on mouse move
+        document.addEventListener('mousemove', (e) => {
+            const cards = document.querySelectorAll('.project-card, .skill-card, .interactive-card');
+            cards.forEach(card => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+
+                if (x >= 0 && x <= rect.width && y >= 0 && y <= rect.height) {
+                    const xPercent = (x / rect.width - 0.5) * 20;
+                    const yPercent = (y / rect.height - 0.5) * 20;
+                    card.style.transform = `perspective(1000px) rotateY(${xPercent}deg) rotateX(${-yPercent}deg) scale(1.02)`;
+                } else {
+                    card.style.transform = '';
+                }
+            });
+        });
+
+
+
+
+
+
+// Tab Switching
+const techTabs = document.querySelectorAll('.tech-tab');
+const techPanels = document.querySelectorAll('.tech-panel');
+
+techTabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+        const tabName = tab.getAttribute('data-tab');
+
+        // Remove active class from all tabs and panels
+        techTabs.forEach(t => t.classList.remove('active'));
+        techPanels.forEach(p => p.classList.remove('active'));
+
+        // Add active class to clicked tab and corresponding panel
+        tab.classList.add('active');
+        document.getElementById(`${tabName}-panel`).classList.add('active');
+    });
+});
+
+
+// 1. TERMINAL SIMULATOR
+
+const terminalOutput = document.getElementById('terminalOutput');
+const cmdButtons = document.querySelectorAll('.cmd-btn');
+
+const commands = {
+    help: [
+        'Available commands:',
+        '  help      - Show this help message',
+        '  skills    - Display technical skills',
+        '  projects  - List featured projects',
+        '  deploy    - Simulate deployment process',
+        '  clear     - Clear terminal output'
+    ],
+    skills: [
+        'Technical Skills & Expertise:',
+        '',
+        '🎨 Frontend:',
+        '  • React.js, Vue.js, Angular',
+        '  • TypeScript, JavaScript (ES6+)',
+        '  • HTML5, CSS3, SASS/SCSS',
+        '  • Material-UI, Tailwind CSS',
+        '',
+        '⚙️  Backend:',
+        '  • Node.js, Express.js, NestJS',
+        '  • Python, FastAPI, Flask',
+        '  • REST APIs, GraphQL, WebSockets',
+        '',
+        '☁️  DevOps & Cloud:',
+        '  • AWS (EC2, ECS, Lambda, S3, RDS)',
+        '  • Docker, Kubernetes',
+        '  • Terraform, CloudFormation',
+        '  • CI/CD (GitHub Actions, Jenkins)',
+        '',
+        '💾 Databases:',
+        '  • MongoDB, PostgreSQL, MySQL',
+        '  • Redis, DynamoDB',
+        '  • Database optimization & scaling'
+    ],
+    projects: [
+        'Featured Projects:',
+        '',
+        '1. Kartavya NGO Platform',
+        '   Tech: React, Node.js, MongoDB, AWS',
+        '   Impact: 50+ NGOs, 10K+ monthly transactions',
+        '',
+        '2. College Connect',
+        '   Tech: React, Express, MongoDB, AWS S3',
+        '   Features: Social networking, file sharing',
+        '',
+        '3. SeniorCounsel Mentorship',
+        '   Tech: Node.js, Socket.io, Redis',
+        '   Scale: 400+ concurrent users, <100ms latency',
+        '',
+        'View live demos in the Projects section above!'
+    ],
+    deploy: [
+        'Starting deployment process...',
+        '[INFO] Running pre-deploy checks...',
+        '[OK] Environment variables validated',
+        '[OK] Dependencies resolved',
+        '[INFO] Building application...',
+        '[OK] Build completed successfully',
+        '[INFO] Running tests...',
+        '[OK] All tests passed (127/127)',
+        '[INFO] Deploying to production...',
+        '[OK] Containers updated',
+        '[OK] Health checks passed',
+        '[SUCCESS] Deployment completed! 🚀',
+        'Application is live at: https://your-app.com'
+    ],
+    clear: ['clear']
+};
+
+function typeText(text, element, delay = 30) {
+    return new Promise(resolve => {
+        let i = 0;
+        const interval = setInterval(() => {
+            if (i < text.length) {
+                element.textContent += text.charAt(i);
+                i++;
+            } else {
+                clearInterval(interval);
+                resolve();
+            }
+        }, delay);
+    });
+}
+
+async function executeCommand(cmd) {
+    if (!commands[cmd]) return;
+
+    // Remove cursor
+    const cursorLine = terminalOutput.querySelector('.prompt');
+    if (cursorLine) cursorLine.remove();
+
+    if (cmd === 'clear') {
+        terminalOutput.innerHTML = '';
+    } else {
+        // Add command echo
+        const cmdLine = document.createElement('div');
+        cmdLine.className = 'terminal-line';
+        cmdLine.innerHTML = `<span class="prompt-symbol">$</span> ${cmd}`;
+        terminalOutput.appendChild(cmdLine);
+
+        // Add output lines
+        for (const line of commands[cmd]) {
+            const outputLine = document.createElement('div');
+            outputLine.className = 'terminal-line';
+            terminalOutput.appendChild(outputLine);
+            await typeText(line, outputLine, 15);
+            terminalOutput.scrollTop = terminalOutput.scrollHeight;
+        }
+    }
+
+    // Add new prompt
+    const newPrompt = document.createElement('div');
+    newPrompt.className = 'terminal-line prompt';
+    newPrompt.innerHTML = '<span class="prompt-symbol">$</span> <span class="terminal-cursor">_</span>';
+    terminalOutput.appendChild(newPrompt);
+    terminalOutput.scrollTop = terminalOutput.scrollHeight;
+}
+
+cmdButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+        const cmd = btn.getAttribute('data-cmd');
+        executeCommand(cmd);
+    });
+});
+
+
+// 2. AWS ARCHITECTURE DIAGRAM
+
+const archNodes = document.querySelectorAll('.arch-node');
+const archDiagram = document.querySelector('.arch-diagram');
+
+// Create connections
+const connections = [
+    {from: 'users', to: 'cloudfront'},
+    {from: 'cloudfront', to: 'alb'},
+    {from: 'alb', to: 'ecs'},
+    {from: 'ecs', to: 'rds'},
+    {from: 'ecs', to: 's3'},
+    {from: 'ecs', to: 'redis'},
+    {from: 's3', to: 'lambda'},
+    {from: 'redis', to: 'lambda'}
+];
+
+function createConnections() {
+    const svg = document.querySelector('.arch-diagram');
+
+    connections.forEach(conn => {
+        const fromNode = document.querySelector(`[data-service="${conn.from}"]`);
+        const toNode = document.querySelector(`[data-service="${conn.to}"]`);
+
+        if (fromNode && toNode) {
+            const fromCircle = fromNode.querySelector('circle, rect');
+            const toCircle = toNode.querySelector('circle, rect');
+
+            if (fromCircle && toCircle) {
+                const x1 = parseFloat(fromCircle.getAttribute('cx') || fromCircle.getAttribute('x')) +
+                           (fromCircle.hasAttribute('width') ? parseFloat(fromCircle.getAttribute('width'))/2 : 0);
+                const y1 = parseFloat(fromCircle.getAttribute('cy') || fromCircle.getAttribute('y')) +
+                           (fromCircle.hasAttribute('height') ? parseFloat(fromCircle.getAttribute('height'))/2 : 0);
+                const x2 = parseFloat(toCircle.getAttribute('cx') || toCircle.getAttribute('x')) +
+                           (toCircle.hasAttribute('width') ? parseFloat(toCircle.getAttribute('width'))/2 : 0);
+                const y2 = parseFloat(toCircle.getAttribute('cy') || toCircle.getAttribute('y')) +
+                           (toCircle.hasAttribute('height') ? parseFloat(toCircle.getAttribute('height'))/2 : 0);
+
+                const line = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+                const d = `M ${x1} ${y1} L ${x2} ${y2}`;
+                line.setAttribute('d', d);
+                line.setAttribute('class', 'arch-connection');
+                line.setAttribute('stroke-dasharray', '5,5');
+                svg.insertBefore(line, svg.firstChild);
+            }
+        }
+    });
+}
+
+// Add hover interactions
+archNodes.forEach(node => {
+    node.addEventListener('mouseenter', () => {
+        const service = node.getAttribute('data-service');
+        const connections = document.querySelectorAll('.arch-connection');
+        connections.forEach(conn => {
+            conn.classList.add('active');
+        });
+    });
+
+    node.addEventListener('mouseleave', () => {
+        const connections = document.querySelectorAll('.arch-connection');
+        connections.forEach(conn => {
+            conn.classList.remove('active');
+        });
+    });
+});
+
+// Create connections when architecture panel is first shown
+document.querySelector('[data-tab="architecture"]').addEventListener('click', () => {
+    setTimeout(createConnections, 100);
+}, {once: true});
+
+
+// 3. CI/CD PIPELINE SIMULATOR
+
+const runPipelineBtn = document.getElementById('runPipeline');
+const pipelineStages = document.querySelectorAll('.pipeline-stage');
+const pipelineLogs = document.getElementById('pipelineLogs');
+
+const pipelineSteps = [
+    {stage: 1, name: 'Code Commit', duration: 1000, logs: [
+        '[INFO] Fetching latest code from repository...',
+        '[OK] Code checked out successfully',
+        '[OK] Branch: main (commit: a1b2c3d)'
+    ]},
+    {stage: 2, name: 'Build', duration: 2000, logs: [
+        '[INFO] Installing dependencies...',
+        '[OK] npm install completed',
+        '[INFO] Compiling TypeScript...',
+        '[OK] Build artifacts generated'
+    ]},
+    {stage: 3, name: 'Test', duration: 1500, logs: [
+        '[INFO] Running unit tests...',
+        '[OK] 127/127 tests passed',
+        '[INFO] Running integration tests...',
+        '[OK] All integration tests passed'
+    ]},
+    {stage: 4, name: 'Security Scan', duration: 1200, logs: [
+        '[INFO] Scanning for vulnerabilities...',
+        '[OK] No critical vulnerabilities found',
+        '[INFO] Checking dependencies...',
+        '[OK] All dependencies are secure'
+    ]},
+    {stage: 5, name: 'Deploy', duration: 1800, logs: [
+        '[INFO] Deploying to production...',
+        '[INFO] Updating ECS tasks...',
+        '[OK] New version deployed',
+        '[OK] Health checks passed',
+        '[SUCCESS] Deployment completed! 🚀'
+    ]}
+];
+
+async function runPipeline() {
+    runPipelineBtn.disabled = true;
+    pipelineLogs.innerHTML = '';
+
+    // Reset all stages
+    pipelineStages.forEach(stage => {
+        stage.classList.remove('running', 'success', 'failed');
+        stage.querySelector('.stage-status').textContent = 'Pending';
+    });
+
+    for (const step of pipelineSteps) {
+        const stageEl = document.querySelector(`[data-stage="${step.stage}"]`);
+        stageEl.classList.add('running');
+        stageEl.querySelector('.stage-status').textContent = 'Running';
+
+        // Add logs
+        for (const log of step.logs) {
+            await new Promise(resolve => setTimeout(resolve, 300));
+            const logLine = document.createElement('div');
+            logLine.textContent = log;
+            pipelineLogs.appendChild(logLine);
+            pipelineLogs.scrollTop = pipelineLogs.scrollHeight;
+        }
+
+        await new Promise(resolve => setTimeout(resolve, step.duration));
+
+        stageEl.classList.remove('running');
+        stageEl.classList.add('success');
+        stageEl.querySelector('.stage-status').textContent = 'Success';
+    }
+
+    runPipelineBtn.disabled = false;
+}
+
+runPipelineBtn.addEventListener('click', runPipeline);
+
+
+// 4. SKILL GRAPH VISUALIZATION
+
+const skillCanvas = document.getElementById('skillGraphCanvas');
+if (skillCanvas) {
+    const skillCtx = skillCanvas.getContext('2d');
+
+    // Set canvas size
+    function resizeSkillCanvas() {
+        const container = skillCanvas.parentElement;
+        skillCanvas.width = container.offsetWidth;
+        skillCanvas.height = 500;
+    }
+
+    window.addEventListener('resize', resizeSkillCanvas);
+    resizeSkillCanvas();
+
+    // Skill nodes
+    const skills = [
+        {name: 'React', category: 'Frontend', x: 150, y: 100, color: '#61DAFB'},
+        {name: 'Vue.js', category: 'Frontend', x: 250, y: 150, color: '#42b883'},
+        {name: 'TypeScript', category: 'Frontend', x: 180, y: 200, color: '#3178c6'},
+        {name: 'Node.js', category: 'Backend', x: 400, y: 100, color: '#339933'},
+        {name: 'Python', category: 'Backend', x: 500, y: 150, color: '#3776ab'},
+        {name: 'FastAPI', category: 'Backend', x: 450, y: 220, color: '#009688'},
+        {name: 'MongoDB', category: 'Database', x: 350, y: 350, color: '#47A248'},
+        {name: 'PostgreSQL', category: 'Database', x: 450, y: 400, color: '#336791'},
+        {name: 'Redis', category: 'Database', x: 550, y: 350, color: '#DC382D'},
+        {name: 'AWS', category: 'DevOps', x: 650, y: 100, color: '#FF9900'},
+        {name: 'Docker', category: 'DevOps', x: 700, y: 200, color: '#2496ED'},
+        {name: 'Kubernetes', category: 'DevOps', x: 650, y: 300, color: '#326CE5'}
+    ];
+
+    // Connections between skills
+    const skillConnections = [
+        [0, 2], [0, 3], [1, 2], [2, 3],
+        [3, 4], [3, 6], [4, 5], [4, 7],
+        [6, 7], [7, 8], [9, 10], [10, 11]
+    ];
+
+    function drawSkillGraph() {
+        skillCtx.clearRect(0, 0, skillCanvas.width, skillCanvas.height);
+
+        // Draw connections
+        skillCtx.strokeStyle = 'rgba(100, 100, 100, 0.2)';
+        skillCtx.lineWidth = 2;
+        skillConnections.forEach(([i, j]) => {
+            skillCtx.beginPath();
+            skillCtx.moveTo(skills[i].x, skills[i].y);
+            skillCtx.lineTo(skills[j].x, skills[j].y);
+            skillCtx.stroke();
+        });
+
+        // Draw nodes
+        skills.forEach(skill => {
+            skillCtx.beginPath();
+            skillCtx.arc(skill.x, skill.y, 30, 0, Math.PI * 2);
+            skillCtx.fillStyle = skill.color;
+            skillCtx.fill();
+            skillCtx.strokeStyle = '#fff';
+            skillCtx.lineWidth = 3;
+            skillCtx.stroke();
+
+            // Draw text
+            skillCtx.fillStyle = '#fff';
+            skillCtx.font = 'bold 12px Arial';
+            skillCtx.textAlign = 'center';
+            skillCtx.textBaseline = 'middle';
+            skillCtx.fillText(skill.name, skill.x, skill.y);
+        });
+    }
+
+    // Animate skill graph
+    let animationFrame = 0;
+    function animateSkillGraph() {
+        animationFrame++;
+
+        // Subtle floating animation
+        skills.forEach((skill, i) => {
+            skill.y += Math.sin(animationFrame * 0.02 + i) * 0.5;
+        });
+
+        drawSkillGraph();
+        requestAnimationFrame(animateSkillGraph);
+    }
+
+    // Start animation when skill graph tab is clicked
+    document.querySelector('[data-tab="skillgraph"]').addEventListener('click', () => {
+        setTimeout(() => {
+            resizeSkillCanvas();
+            animateSkillGraph();
+        }, 100);
+    }, {once: true});
+}
+
+
+
+
+                // Form Submission
         document.getElementById('contactForm').addEventListener('submit', (e) => {
             e.preventDefault();
             alert('Thank you for reaching out! This is a demo portfolio.');
