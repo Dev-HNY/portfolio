@@ -202,6 +202,17 @@
             width: 100%;
         }
 
+        .nav-links a.active {
+            color: var(--accent);
+            font-weight: 600;
+        }
+
+        .nav-links a.active::after {
+            width: 100%;
+            background: var(--accent);
+            height: 3px;
+        }
+
         /* Theme Toggle */
         .theme-toggle {
             width: 44px;
@@ -1947,7 +1958,7 @@
             <div class="timeline">
                 <div class="timeline-item">
                     <div class="timeline-header">
-                        <div class="timeline-date">October 2024 — Present</div>
+                        <div class="timeline-date">October 2025 — Present</div>
                         <div class="timeline-title">Tech Lead</div>
                         <div class="timeline-company">Camorent • Delhi, India</div>
                     </div>
@@ -1965,7 +1976,7 @@
                 </div>
                 <div class="timeline-item">
                     <div class="timeline-header">
-                        <div class="timeline-date">March 2022 — October 2024</div>
+                        <div class="timeline-date">March 2022 — October 2025</div>
                         <div class="timeline-title">Lead Full Stack Developer</div>
                         <div class="timeline-company">SOTAOG • Houston, Texas</div>
                     </div>
@@ -2441,15 +2452,40 @@
             el.addEventListener('mouseleave', () => cursor.classList.remove('active'));
         });
 
-        // Navigation Scroll Effect
+        // Advanced Navigation with Active Section Tracking
         const nav = document.querySelector('nav');
-        window.addEventListener('scroll', () => {
+        const navLinks = document.querySelectorAll('.nav-links a');
+        const sections = document.querySelectorAll('section[id]');
+
+        function updateActiveNavLink() {
+            // Update scrolled state
             if (window.scrollY > 50) {
                 nav.classList.add('scrolled');
             } else {
                 nav.classList.remove('scrolled');
             }
-        });
+
+            // Find current section
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (window.scrollY >= (sectionTop - 200)) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            // Update active link
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('active');
+                }
+            });
+        }
+
+        window.addEventListener('scroll', updateActiveNavLink);
+        updateActiveNavLink();
 
         // Smooth Scroll
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -2531,14 +2567,25 @@
                 const theme = html.getAttribute('data-theme');
                 ctx.beginPath();
                 ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-                ctx.fillStyle = theme === 'dark' 
-                    ? 'rgba(10, 132, 255, 0.4)' 
-                    : 'rgba(0, 113, 227, 0.4)';
+
+                // Enhanced visibility with glow effect
+                const gradient = ctx.createRadialGradient(this.x, this.y, 0, this.x, this.y, this.radius * 3);
+                if (theme === 'dark') {
+                    gradient.addColorStop(0, 'rgba(10, 132, 255, 0.8)');
+                    gradient.addColorStop(0.5, 'rgba(10, 132, 255, 0.4)');
+                    gradient.addColorStop(1, 'rgba(10, 132, 255, 0)');
+                } else {
+                    gradient.addColorStop(0, 'rgba(0, 113, 227, 0.8)');
+                    gradient.addColorStop(0.5, 'rgba(0, 113, 227, 0.4)');
+                    gradient.addColorStop(1, 'rgba(0, 113, 227, 0)');
+                }
+
+                ctx.fillStyle = gradient;
                 ctx.fill();
             }
         }
 
-        for (let i = 0; i < 60; i++) {
+        for (let i = 0; i < 100; i++) {
             particles.push(new Particle());
         }
 
@@ -2556,16 +2603,16 @@
                     const dy = p1.y - p2.y;
                     const distance = Math.sqrt(dx * dx + dy * dy);
 
-                    if (distance < 120) {
+                    if (distance < 150) {
                         const theme = html.getAttribute('data-theme');
                         ctx.beginPath();
                         ctx.moveTo(p1.x, p1.y);
                         ctx.lineTo(p2.x, p2.y);
-                        const opacity = (1 - distance / 120) * 0.15;
+                        const opacity = (1 - distance / 150) * 0.4;
                         ctx.strokeStyle = theme === 'dark'
                             ? `rgba(10, 132, 255, ${opacity})`
                             : `rgba(0, 113, 227, ${opacity})`;
-                        ctx.lineWidth = 0.5;
+                        ctx.lineWidth = 1.5;
                         ctx.stroke();
                     }
                 });
