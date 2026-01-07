@@ -547,8 +547,9 @@
         }
 
         .section-container {
-            max-width: 1400px;
+            max-width: 1600px;
             margin: 0 auto;
+            padding: 0 2rem;
         }
 
         .section-header {
@@ -1272,8 +1273,9 @@
     border: 2px solid var(--border);
     border-radius: 16px;
     padding: 2rem;
-    max-width: 900px;
+    max-width: 100%;
     margin: 0 auto;
+    overflow-x: auto;
 }
 
 .arch-title {
@@ -1339,7 +1341,7 @@
 
 /* Pipeline Styles */
 .pipeline-container {
-    max-width: 1000px;
+    max-width: 100%;
     margin: 0 auto;
     background: var(--card-bg);
     border: 2px solid var(--border);
@@ -1477,43 +1479,260 @@
     background: var(--accent-hover);
 }
 
-/* Skill Graph Styles */
-.skill-graph-container {
-    background: var(--card-bg);
+/* Enhanced CI/CD Pipeline Styles */
+.pipeline-flow {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 0.75rem;
+    margin: 2rem 0;
+    align-items: stretch;
+}
+
+.pipeline-stage-card {
+    background: var(--bg-secondary);
     border: 2px solid var(--border);
-    border-radius: 16px;
-    padding: 2rem;
-    max-width: 900px;
-    margin: 0 auto;
+    border-radius: 12px;
+    padding: 1.25rem;
+    transition: all 0.3s ease;
+    position: relative;
+    min-height: 200px;
+    display: flex;
+    flex-direction: column;
+}
+
+.pipeline-stage-card:hover {
+    transform: translateY(-4px);
+    border-color: var(--accent);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.stage-header {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+}
+
+.stage-icon-new {
+    width: 40px;
+    height: 40px;
+    background: linear-gradient(135deg, var(--accent), #0056b3);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.stage-icon-new svg {
+    color: white;
+}
+
+.stage-info {
+    flex: 1;
+}
+
+.stage-name-new {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 0.2rem;
+}
+
+.stage-tech {
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+    font-weight: 500;
+}
+
+.stage-details {
+    flex: 1;
+    margin-bottom: 0.75rem;
+}
+
+.detail-item {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    padding: 0.35rem 0;
+    border-left: 2px solid var(--border);
+    padding-left: 0.5rem;
+    margin-bottom: 0.25rem;
+}
+
+.stage-status-new {
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 0.4rem 0.75rem;
+    border-radius: 20px;
+    text-align: center;
+    align-self: flex-start;
+}
+
+.stage-status-new.ready {
+    background: linear-gradient(135deg, #10b981, #059669);
+    color: white;
+}
+
+.stage-status-new.pending {
+    background: linear-gradient(135deg, #f59e0b, #d97706);
+    color: white;
+}
+
+.stage-status-new.running {
+    background: linear-gradient(135deg, var(--accent), #0056b3);
+    color: white;
+    animation: pulse 1.5s ease-in-out infinite;
+}
+
+.stage-status-new.success {
+    background: linear-gradient(135deg, #10b981, #059669);
+    color: white;
+}
+
+.stage-status-new.failed {
+    background: linear-gradient(135deg, #ef4444, #dc2626);
+    color: white;
+}
+
+.pipeline-connector {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     position: relative;
 }
 
-#skillGraphCanvas {
+.connector-line {
     width: 100%;
-    height: 500px;
-    display: block;
+    height: 2px;
+    background: linear-gradient(90deg, var(--border), var(--accent), var(--border));
 }
 
-.skill-legend {
-    display: flex;
-    gap: 2rem;
-    justify-content: center;
-    margin-top: 2rem;
-    flex-wrap: wrap;
+.connector-arrow {
+    position: absolute;
+    color: var(--accent);
+    font-size: 1.2rem;
+    background: var(--bg-secondary);
+    padding: 0 0.25rem;
 }
 
-.legend-item {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    font-size: 0.9rem;
+.pipeline-metrics {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+    margin: 2rem 0 1.5rem 0;
+}
+
+.metric-card {
+    background: var(--bg-secondary);
+    border: 2px solid var(--border);
+    border-radius: 12px;
+    padding: 1.25rem;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.metric-card:hover {
+    border-color: var(--accent);
+    transform: translateY(-2px);
+}
+
+.metric-value {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--accent);
+    margin-bottom: 0.5rem;
+}
+
+.metric-label {
+    font-size: 0.8rem;
     color: var(--text-secondary);
+    font-weight: 500;
 }
 
-.legend-color {
-    width: 20px;
-    height: 20px;
-    border-radius: 4px;
+/* Skill Proficiency Styles */
+.skill-proficiency-container {
+    background: var(--card-bg);
+    border: 2px solid var(--border);
+    border-radius: 16px;
+    padding: 3rem;
+    max-width: 100%;
+    margin: 0 auto;
+}
+
+.proficiency-category {
+    margin-bottom: 3rem;
+}
+
+.proficiency-category:last-child {
+    margin-bottom: 0;
+}
+
+.proficiency-category h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+    color: var(--text-primary);
+    font-weight: 700;
+}
+
+.skill-bars {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+}
+
+.skill-bar-item {
+    opacity: 1;
+    transform: translateX(0);
+    transition: all 0.5s ease;
+}
+
+.skill-bar-label {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.5rem;
+    font-size: 0.95rem;
+}
+
+.skill-bar-label span:first-child {
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.skill-percentage {
+    color: var(--accent);
+    font-weight: 700;
+}
+
+.skill-bar-track {
+    height: 12px;
+    background: var(--bg-tertiary);
+    border-radius: 10px;
+    overflow: hidden;
+    position: relative;
+}
+
+.skill-bar-fill {
+    height: 100%;
+    border-radius: 10px;
+    transition: width 1.5s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+.skill-bar-fill::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+    animation: shimmer 2s infinite;
+}
+
+@keyframes shimmer {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
 }
 
 /* Responsive */
@@ -1534,6 +1753,19 @@
     .pipeline-stages {
         flex-direction: column;
         align-items: stretch;
+    }
+
+    .pipeline-flow {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    .pipeline-connector {
+        display: none;
+    }
+
+    .pipeline-metrics {
+        grid-template-columns: repeat(2, 1fr);
     }
 
     .pipeline-arrow {
@@ -2214,67 +2446,308 @@
             <!-- Panel 2: AWS Architecture -->
             <div class="tech-panel" id="architecture-panel">
                 <div class="architecture-canvas">
-                    <div class="arch-title">Scalable Production Architecture</div>
-                    <svg class="arch-diagram" viewBox="0 0 800 500">
-                        <!-- Users -->
-                        <g class="arch-node" data-service="users">
-                            <circle cx="100" cy="250" r="30" fill="#0071e3" opacity="0.2"/>
-                            <text x="100" y="255" text-anchor="middle" fill="var(--text-primary)" font-size="28">👥</text>
-                            <text x="100" y="295" text-anchor="middle" fill="var(--text-secondary)" font-size="12">Users</text>
+                    <div class="arch-title">Enterprise-Grade AWS Architecture</div>
+                    <svg class="arch-diagram" viewBox="0 0 1200 750" style="max-height: 600px;">
+                        <!-- Define gradients for AWS services -->
+                        <defs>
+                            <linearGradient id="awsOrange" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" style="stop-color:#FF9900;stop-opacity:0.3" />
+                                <stop offset="100%" style="stop-color:#FF9900;stop-opacity:0.1" />
+                            </linearGradient>
+                            <linearGradient id="awsBlue" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" style="stop-color:#527FFF;stop-opacity:0.3" />
+                                <stop offset="100%" style="stop-color:#527FFF;stop-opacity:0.1" />
+                            </linearGradient>
+                            <linearGradient id="awsGreen" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" style="stop-color:#569A31;stop-opacity:0.3" />
+                                <stop offset="100%" style="stop-color:#569A31;stop-opacity:0.1" />
+                            </linearGradient>
+                            <linearGradient id="awsPurple" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" style="stop-color:#C925D1;stop-opacity:0.3" />
+                                <stop offset="100%" style="stop-color:#C925D1;stop-opacity:0.1" />
+                            </linearGradient>
+                        </defs>
+
+                        <!-- Layer 1: Users & DNS -->
+                        <g class="arch-layer">
+                            <!-- Users -->
+                            <g class="arch-node" data-service="users">
+                                <circle cx="80" cy="350" r="35" fill="#0071e3" opacity="0.2" stroke="var(--accent)" stroke-width="2"/>
+                                <text x="80" y="360" text-anchor="middle" fill="var(--text-primary)" font-size="38">👥</text>
+                                <text x="80" y="405" text-anchor="middle" fill="var(--text-secondary)" font-size="14" font-weight="700">End Users</text>
+                            </g>
+
+                            <!-- Route 53 DNS -->
+                            <g class="arch-node" data-service="route53">
+                                <rect x="160" y="315" width="90" height="80" rx="10" fill="url(#awsOrange)" stroke="#FF9900" stroke-width="2"/>
+                                <text x="205" y="350" text-anchor="middle" fill="var(--text-primary)" font-size="32">🌐</text>
+                                <text x="205" y="372" text-anchor="middle" fill="var(--text-primary)" font-size="13" font-weight="bold">Route 53</text>
+                                <text x="205" y="388" text-anchor="middle" fill="var(--text-secondary)" font-size="11">DNS</text>
+                            </g>
                         </g>
 
-                        <!-- CloudFront CDN -->
-                        <g class="arch-node" data-service="cloudfront">
-                            <rect x="170" y="220" width="60" height="60" rx="8" fill="#FF9900" opacity="0.2"/>
-                            <text x="200" y="255" text-anchor="middle" fill="var(--text-primary)" font-size="24">☁️</text>
-                            <text x="200" y="295" text-anchor="middle" fill="var(--text-secondary)" font-size="10">CloudFront</text>
+                        <!-- Layer 2: CDN & Security -->
+                        <g class="arch-layer">
+                            <!-- WAF -->
+                            <g class="arch-node" data-service="waf">
+                                <rect x="290" y="220" width="90" height="80" rx="10" fill="url(#awsOrange)" stroke="#FF4500" stroke-width="2"/>
+                                <text x="335" y="255" text-anchor="middle" fill="var(--text-primary)" font-size="30">🛡️</text>
+                                <text x="335" y="277" text-anchor="middle" fill="var(--text-primary)" font-size="13" font-weight="bold">WAF</text>
+                                <text x="335" y="293" text-anchor="middle" fill="var(--text-secondary)" font-size="10">Security</text>
+                            </g>
+
+                            <!-- CloudFront CDN -->
+                            <g class="arch-node" data-service="cloudfront">
+                                <rect x="290" y="360" width="90" height="80" rx="10" fill="url(#awsOrange)" stroke="#FF9900" stroke-width="2"/>
+                                <text x="335" y="395" text-anchor="middle" fill="var(--text-primary)" font-size="32">☁️</text>
+                                <text x="335" y="417" text-anchor="middle" fill="var(--text-primary)" font-size="13" font-weight="bold">CloudFront</text>
+                                <text x="335" y="433" text-anchor="middle" fill="var(--text-secondary)" font-size="10">CDN</text>
+                            </g>
                         </g>
 
-                        <!-- Application Load Balancer -->
-                        <g class="arch-node" data-service="alb">
-                            <rect x="280" y="220" width="60" height="60" rx="8" fill="#FF9900" opacity="0.2"/>
-                            <text x="310" y="255" text-anchor="middle" fill="var(--text-primary)" font-size="24">⚖️</text>
-                            <text x="310" y="295" text-anchor="middle" fill="var(--text-secondary)" font-size="11">ALB</text>
+                        <!-- Layer 3: Load Balancing -->
+                        <g class="arch-layer">
+                            <!-- Application Load Balancer -->
+                            <g class="arch-node" data-service="alb">
+                                <rect x="420" y="315" width="95" height="80" rx="10" fill="url(#awsOrange)" stroke="#FF9900" stroke-width="2"/>
+                                <text x="467.5" y="350" text-anchor="middle" fill="var(--text-primary)" font-size="34">⚖️</text>
+                                <text x="467.5" y="373" text-anchor="middle" fill="var(--text-primary)" font-size="13" font-weight="bold">ALB</text>
+                                <text x="467.5" y="389" text-anchor="middle" fill="var(--text-secondary)" font-size="10">Load Balancer</text>
+                            </g>
                         </g>
 
-                        <!-- ECS Fargate -->
-                        <g class="arch-node" data-service="ecs">
-                            <rect x="390" y="150" width="80" height="80" rx="8" fill="#FF9900" opacity="0.2"/>
-                            <text x="430" y="195" text-anchor="middle" fill="var(--text-primary)" font-size="32">🐳</text>
-                            <text x="430" y="245" text-anchor="middle" fill="var(--text-secondary)" font-size="10">ECS Fargate</text>
+                        <!-- Layer 4: Auto Scaling Group -->
+                        <g class="arch-layer">
+                            <!-- Auto Scaling Group Container -->
+                            <rect x="550" y="200" width="260" height="300" rx="12" fill="none" stroke="var(--accent)" stroke-width="3" stroke-dasharray="10,6"/>
+                            <text x="680" y="225" text-anchor="middle" fill="var(--accent)" font-size="14" font-weight="bold">⚙️ Auto Scaling Group</text>
+                            <text x="680" y="245" text-anchor="middle" fill="var(--text-secondary)" font-size="11">Min: 2 | Desired: 4 | Max: 10</text>
+
+                            <!-- ECS Fargate Container 1 -->
+                            <g class="arch-node" data-service="ecs1">
+                                <rect x="565" y="265" width="100" height="85" rx="10" fill="url(#awsOrange)" stroke="#FF9900" stroke-width="2"/>
+                                <text x="615" y="303" text-anchor="middle" fill="var(--text-primary)" font-size="36">🐳</text>
+                                <text x="615" y="327" text-anchor="middle" fill="var(--text-primary)" font-size="12" font-weight="bold">ECS Fargate</text>
+                                <text x="615" y="343" text-anchor="middle" fill="var(--text-secondary)" font-size="10">Container 1</text>
+                            </g>
+
+                            <!-- ECS Fargate Container 2 -->
+                            <g class="arch-node" data-service="ecs2">
+                                <rect x="695" y="265" width="100" height="85" rx="10" fill="url(#awsOrange)" stroke="#FF9900" stroke-width="2"/>
+                                <text x="745" y="303" text-anchor="middle" fill="var(--text-primary)" font-size="36">🐳</text>
+                                <text x="745" y="327" text-anchor="middle" fill="var(--text-primary)" font-size="12" font-weight="bold">ECS Fargate</text>
+                                <text x="745" y="343" text-anchor="middle" fill="var(--text-secondary)" font-size="10">Container 2</text>
+                            </g>
+
+                            <!-- ECS Fargate Container 3 -->
+                            <g class="arch-node" data-service="ecs3">
+                                <rect x="565" y="380" width="100" height="85" rx="10" fill="url(#awsOrange)" stroke="#FF9900" stroke-width="2" opacity="0.6"/>
+                                <text x="615" y="418" text-anchor="middle" fill="var(--text-primary)" font-size="36">🐳</text>
+                                <text x="615" y="442" text-anchor="middle" fill="var(--text-primary)" font-size="12" font-weight="bold">ECS Fargate</text>
+                                <text x="615" y="458" text-anchor="middle" fill="var(--text-secondary)" font-size="10">Scaling...</text>
+                            </g>
+
+                            <!-- ECS Fargate Container 4 -->
+                            <g class="arch-node" data-service="ecs4">
+                                <rect x="695" y="380" width="100" height="85" rx="10" fill="url(#awsOrange)" stroke="#FF9900" stroke-width="2" opacity="0.6"/>
+                                <text x="745" y="418" text-anchor="middle" fill="var(--text-primary)" font-size="36">🐳</text>
+                                <text x="745" y="442" text-anchor="middle" fill="var(--text-primary)" font-size="12" font-weight="bold">ECS Fargate</text>
+                                <text x="745" y="458" text-anchor="middle" fill="var(--text-secondary)" font-size="10">Scaling...</text>
+                            </g>
                         </g>
 
-                        <!-- RDS Database -->
-                        <g class="arch-node" data-service="rds">
-                            <rect x="390" y="270" width="80" height="80" rx="8" fill="#527FFF" opacity="0.2"/>
-                            <text x="430" y="315" text-anchor="middle" fill="var(--text-primary)" font-size="32">💾</text>
-                            <text x="430" y="365" text-anchor="middle" fill="var(--text-secondary)" font-size="11">RDS</text>
+                        <!-- Layer 5: Data Layer -->
+                        <g class="arch-layer">
+                            <!-- RDS Multi-AZ -->
+                            <g class="arch-node" data-service="rds">
+                                <rect x="845" y="245" width="105" height="95" rx="10" fill="url(#awsBlue)" stroke="#527FFF" stroke-width="2"/>
+                                <text x="897.5" y="287" text-anchor="middle" fill="var(--text-primary)" font-size="40">💾</text>
+                                <text x="897.5" y="312" text-anchor="middle" fill="var(--text-primary)" font-size="13" font-weight="bold">RDS</text>
+                                <text x="897.5" y="327" text-anchor="middle" fill="var(--text-secondary)" font-size="10">PostgreSQL</text>
+                                <text x="897.5" y="340" text-anchor="middle" fill="var(--text-secondary)" font-size="10">Multi-AZ</text>
+                            </g>
+
+                            <!-- ElastiCache Redis -->
+                            <g class="arch-node" data-service="redis">
+                                <rect x="845" y="370" width="105" height="95" rx="10" fill="url(#awsPurple)" stroke="#C925D1" stroke-width="2"/>
+                                <text x="897.5" y="412" text-anchor="middle" fill="var(--text-primary)" font-size="38">⚡</text>
+                                <text x="897.5" y="437" text-anchor="middle" fill="var(--text-primary)" font-size="13" font-weight="bold">ElastiCache</text>
+                                <text x="897.5" y="452" text-anchor="middle" fill="var(--text-secondary)" font-size="10">Redis Cluster</text>
+                            </g>
                         </g>
 
-                        <!-- S3 Storage -->
-                        <g class="arch-node" data-service="s3">
-                            <rect x="530" y="150" width="70" height="70" rx="8" fill="#569A31" opacity="0.2"/>
-                            <text x="565" y="190" text-anchor="middle" fill="var(--text-primary)" font-size="28">📦</text>
-                            <text x="565" y="235" text-anchor="middle" fill="var(--text-secondary)" font-size="11">S3</text>
+                        <!-- Layer 6: Storage & Serverless -->
+                        <g class="arch-layer">
+                            <!-- S3 Storage -->
+                            <g class="arch-node" data-service="s3">
+                                <rect x="980" y="245" width="100" height="95" rx="10" fill="url(#awsGreen)" stroke="#569A31" stroke-width="2"/>
+                                <text x="1030" y="287" text-anchor="middle" fill="var(--text-primary)" font-size="38">📦</text>
+                                <text x="1030" y="312" text-anchor="middle" fill="var(--text-primary)" font-size="13" font-weight="bold">S3</text>
+                                <text x="1030" y="327" text-anchor="middle" fill="var(--text-secondary)" font-size="10">Object Storage</text>
+                            </g>
+
+                            <!-- Lambda Functions -->
+                            <g class="arch-node" data-service="lambda">
+                                <rect x="980" y="370" width="100" height="95" rx="10" fill="url(#awsOrange)" stroke="#FF9900" stroke-width="2"/>
+                                <text x="1030" y="412" text-anchor="middle" fill="var(--text-primary)" font-size="42">λ</text>
+                                <text x="1030" y="437" text-anchor="middle" fill="var(--text-primary)" font-size="13" font-weight="bold">Lambda</text>
+                                <text x="1030" y="452" text-anchor="middle" fill="var(--text-secondary)" font-size="10">Serverless</text>
+                            </g>
                         </g>
 
-                        <!-- ElastiCache Redis -->
-                        <g class="arch-node" data-service="redis">
-                            <rect x="530" y="270" width="70" height="70" rx="8" fill="#C925D1" opacity="0.2"/>
-                            <text x="565" y="310" text-anchor="middle" fill="var(--text-primary)" font-size="28">⚡</text>
-                            <text x="565" y="355" text-anchor="middle" fill="var(--text-secondary)" font-size="10">ElastiCache</text>
+                        <!-- Layer 7: Monitoring -->
+                        <g class="arch-layer">
+                            <!-- CloudWatch -->
+                            <g class="arch-node" data-service="cloudwatch">
+                                <rect x="1105" y="295" width="100" height="105" rx="10" fill="url(#awsPurple)" stroke="#C925D1" stroke-width="2"/>
+                                <text x="1155" y="342" text-anchor="middle" fill="var(--text-primary)" font-size="40">📊</text>
+                                <text x="1155" y="367" text-anchor="middle" fill="var(--text-primary)" font-size="13" font-weight="bold">CloudWatch</text>
+                                <text x="1155" y="382" text-anchor="middle" fill="var(--text-secondary)" font-size="10">Monitoring</text>
+                                <text x="1155" y="395" text-anchor="middle" fill="var(--text-secondary)" font-size="10">& Alerts</text>
+                            </g>
                         </g>
 
-                        <!-- Lambda Functions -->
-                        <g class="arch-node" data-service="lambda">
-                            <rect x="650" y="210" width="70" height="70" rx="8" fill="#FF9900" opacity="0.2"/>
-                            <text x="685" y="250" text-anchor="middle" fill="var(--text-primary)" font-size="32">λ</text>
-                            <text x="685" y="295" text-anchor="middle" fill="var(--text-secondary)" font-size="10">Lambda</text>
+                        <!-- Connection Lines with Data Flow -->
+                        <g class="arch-connections">
+                            <!-- Flow 1: Users to Route 53 -->
+                            <path id="flow1" d="M 115 350 L 160 350" stroke="var(--accent)" stroke-width="3" fill="none" opacity="0.8" marker-end="url(#arrowhead)"/>
+                            <text x="137" y="340" text-anchor="middle" fill="var(--accent)" font-size="10" font-weight="600">DNS Query</text>
+
+                            <!-- Flow 2: Route 53 to CloudFront -->
+                            <path id="flow2" d="M 250 350 L 290 400" stroke="var(--accent)" stroke-width="3" fill="none" opacity="0.8" marker-end="url(#arrowhead)"/>
+                            <text x="265" y="370" text-anchor="middle" fill="var(--accent)" font-size="10" font-weight="600">Request</text>
+
+                            <!-- Flow 3: Route 53 to WAF -->
+                            <path id="flow3" d="M 250 350 L 290 260" stroke="#FF4500" stroke-width="3" fill="none" opacity="0.8" marker-end="url(#arrowhead-waf)"/>
+                            <text x="270" y="300" text-anchor="middle" fill="#FF4500" font-size="10" font-weight="600">Security</text>
+
+                            <!-- Flow 4: CloudFront to ALB -->
+                            <path id="flow4" d="M 380 400 L 420 355" stroke="var(--accent)" stroke-width="3" fill="none" opacity="0.8" marker-end="url(#arrowhead)"/>
+                            <text x="395" y="370" text-anchor="middle" fill="var(--accent)" font-size="10" font-weight="600">Traffic</text>
+
+                            <!-- Flow 5: ALB to Containers -->
+                            <path id="flow5" d="M 515 350 L 565 307" stroke="#10b981" stroke-width="3" fill="none" opacity="0.8" marker-end="url(#arrowhead-green)"/>
+                            <text x="535" y="323" text-anchor="middle" fill="#10b981" font-size="9" font-weight="600">Load Balance</text>
+
+                            <path id="flow6" d="M 515 350 L 695 307" stroke="#10b981" stroke-width="3" fill="none" opacity="0.8" marker-end="url(#arrowhead-green)"/>
+
+                            <path id="flow7" d="M 515 355 L 565 418" stroke="#10b981" stroke-width="3" fill="none" opacity="0.8" marker-end="url(#arrowhead-green)" stroke-dasharray="5,3"/>
+
+                            <path id="flow8" d="M 515 355 L 695 418" stroke="#10b981" stroke-width="3" fill="none" opacity="0.8" marker-end="url(#arrowhead-green)" stroke-dasharray="5,3"/>
+
+                            <!-- Flow 9: Containers to RDS -->
+                            <path id="flow9" d="M 665 307 L 845 292" stroke="#527FFF" stroke-width="3" fill="none" opacity="0.8" marker-end="url(#arrowhead-blue)"/>
+                            <text x="750" y="295" text-anchor="middle" fill="#527FFF" font-size="10" font-weight="600">Database Queries</text>
+
+                            <path id="flow10" d="M 795 307 L 845 292" stroke="#527FFF" stroke-width="3" fill="none" opacity="0.8" marker-end="url(#arrowhead-blue)"/>
+
+                            <!-- Flow 11: Containers to Redis -->
+                            <path id="flow11" d="M 665 418 L 845 417" stroke="#C925D1" stroke-width="3" fill="none" opacity="0.8" marker-end="url(#arrowhead-purple)"/>
+                            <text x="750" y="413" text-anchor="middle" fill="#C925D1" font-size="10" font-weight="600">Cache</text>
+
+                            <path id="flow12" d="M 795 418 L 845 417" stroke="#C925D1" stroke-width="3" fill="none" opacity="0.8" marker-end="url(#arrowhead-purple)"/>
+
+                            <!-- Flow 13: Containers to S3 -->
+                            <path id="flow13" d="M 665 292 L 980 287" stroke="#569A31" stroke-width="3" fill="none" opacity="0.8" marker-end="url(#arrowhead-green2)"/>
+                            <text x="820" y="280" text-anchor="middle" fill="#569A31" font-size="10" font-weight="600">Static Assets</text>
+
+                            <!-- Flow 14: To Lambda -->
+                            <path id="flow14" d="M 795 432 L 980 417" stroke="#FF9900" stroke-width="3" fill="none" opacity="0.8" marker-end="url(#arrowhead-orange)"/>
+                            <text x="885" y="420" text-anchor="middle" fill="#FF9900" font-size="10" font-weight="600">Events</text>
+
+                            <!-- Flow 15: To CloudWatch (Monitoring) -->
+                            <path id="flow15" d="M 950 292 L 1105 340" stroke="#C925D1" stroke-width="2" fill="none" opacity="0.6" stroke-dasharray="6,4" marker-end="url(#arrowhead-purple)"/>
+                            <text x="1025" y="310" text-anchor="middle" fill="#C925D1" font-size="9" font-weight="600">Logs</text>
+
+                            <path id="flow16" d="M 1080 417 L 1105 380" stroke="#C925D1" stroke-width="2" fill="none" opacity="0.6" stroke-dasharray="6,4" marker-end="url(#arrowhead-purple)"/>
+                            <text x="1090" y="400" text-anchor="middle" fill="#C925D1" font-size="9" font-weight="600">Metrics</text>
+
+                            <!-- Animated data flow particles -->
+                            <circle r="6" fill="var(--accent)" opacity="0.9">
+                                <animateMotion dur="3s" repeatCount="indefinite" path="M 115 350 L 160 350 L 250 350 L 290 400 L 380 400 L 420 355 L 515 350 L 565 307"/>
+                            </circle>
+
+                            <circle r="6" fill="#10b981" opacity="0.9">
+                                <animateMotion dur="3.5s" repeatCount="indefinite" path="M 515 350 L 695 307 L 795 307 L 845 292"/>
+                            </circle>
+
+                            <circle r="6" fill="#527FFF" opacity="0.9">
+                                <animateMotion dur="2.5s" repeatCount="indefinite" begin="0.5s" path="M 665 307 L 845 292"/>
+                            </circle>
+
+                            <circle r="6" fill="#C925D1" opacity="0.9">
+                                <animateMotion dur="2.8s" repeatCount="indefinite" begin="1s" path="M 665 418 L 845 417"/>
+                            </circle>
+
+                            <circle r="6" fill="#569A31" opacity="0.9">
+                                <animateMotion dur="3.2s" repeatCount="indefinite" begin="0.7s" path="M 665 292 L 980 287"/>
+                            </circle>
+                        </g>
+
+                        <!-- Arrow marker definitions -->
+                        <defs>
+                            <marker id="arrowhead" markerWidth="12" markerHeight="12" refX="10" refY="4" orient="auto">
+                                <polygon points="0 0, 12 4, 0 8" fill="var(--accent)" />
+                            </marker>
+                            <marker id="arrowhead-green" markerWidth="12" markerHeight="12" refX="10" refY="4" orient="auto">
+                                <polygon points="0 0, 12 4, 0 8" fill="#10b981" />
+                            </marker>
+                            <marker id="arrowhead-blue" markerWidth="12" markerHeight="12" refX="10" refY="4" orient="auto">
+                                <polygon points="0 0, 12 4, 0 8" fill="#527FFF" />
+                            </marker>
+                            <marker id="arrowhead-purple" markerWidth="12" markerHeight="12" refX="10" refY="4" orient="auto">
+                                <polygon points="0 0, 12 4, 0 8" fill="#C925D1" />
+                            </marker>
+                            <marker id="arrowhead-orange" markerWidth="12" markerHeight="12" refX="10" refY="4" orient="auto">
+                                <polygon points="0 0, 12 4, 0 8" fill="#FF9900" />
+                            </marker>
+                            <marker id="arrowhead-green2" markerWidth="12" markerHeight="12" refX="10" refY="4" orient="auto">
+                                <polygon points="0 0, 12 4, 0 8" fill="#569A31" />
+                            </marker>
+                            <marker id="arrowhead-waf" markerWidth="12" markerHeight="12" refX="10" refY="4" orient="auto">
+                                <polygon points="0 0, 12 4, 0 8" fill="#FF4500" />
+                            </marker>
+                        </defs>
+
+                        <!-- Auto-scaling indicators -->
+                        <g class="scaling-indicators">
+                            <text x="680" y="520" text-anchor="middle" fill="var(--accent)" font-size="13" font-weight="bold">📈 Auto-Scaling Active</text>
+                            <text x="680" y="538" text-anchor="middle" fill="var(--text-secondary)" font-size="11">CPU &gt; 70% → Scale Up | CPU &lt; 30% → Scale Down</text>
                         </g>
                     </svg>
 
                     <div class="arch-legend">
-                        <div class="arch-stats">
+                        <div class="flow-legend">
+                            <h4 style="font-size: 0.95rem; font-weight: 700; margin-bottom: 0.75rem; color: var(--text-primary);">Data Flow Legend</h4>
+                            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 0.5rem;">
+                                <div style="display: flex; align-items: center; gap: 0.5rem;">
+                                    <div style="width: 30px; height: 3px; background: var(--accent);"></div>
+                                    <span style="font-size: 0.8rem; color: var(--text-secondary);">User Traffic</span>
+                                </div>
+                                <div style="display: flex; align-items: center; gap: 0.5rem;">
+                                    <div style="width: 30px; height: 3px; background: #10b981;"></div>
+                                    <span style="font-size: 0.8rem; color: var(--text-secondary);">Load Balanced</span>
+                                </div>
+                                <div style="display: flex; align-items: center; gap: 0.5rem;">
+                                    <div style="width: 30px; height: 3px; background: #527FFF;"></div>
+                                    <span style="font-size: 0.8rem; color: var(--text-secondary);">DB Queries</span>
+                                </div>
+                                <div style="display: flex; align-items: center; gap: 0.5rem;">
+                                    <div style="width: 30px; height: 3px; background: #C925D1;"></div>
+                                    <span style="font-size: 0.8rem; color: var(--text-secondary);">Cache/Logs</span>
+                                </div>
+                                <div style="display: flex; align-items: center; gap: 0.5rem;">
+                                    <div style="width: 30px; height: 3px; background: #569A31;"></div>
+                                    <span style="font-size: 0.8rem; color: var(--text-secondary);">Static Assets</span>
+                                </div>
+                                <div style="display: flex; align-items: center; gap: 0.5rem;">
+                                    <div style="width: 30px; height: 3px; background: #FF4500;"></div>
+                                    <span style="font-size: 0.8rem; color: var(--text-secondary);">Security</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="arch-stats" style="margin-top: 1.5rem;">
                             <div class="stat-item">
                                 <span class="stat-value">99.99%</span>
                                 <span class="stat-label">Uptime SLA</span>
@@ -2288,8 +2761,16 @@
                                 <span class="stat-label">Requests/sec</span>
                             </div>
                             <div class="stat-item">
-                                <span class="stat-value">Auto</span>
-                                <span class="stat-label">Scaling</span>
+                                <span class="stat-value">2-10</span>
+                                <span class="stat-label">Auto Scaling</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-value">Multi-AZ</span>
+                                <span class="stat-label">High Availability</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-value">Real-time</span>
+                                <span class="stat-label">Monitoring</span>
                             </div>
                         </div>
                     </div>
@@ -2299,59 +2780,299 @@
             <!-- Panel 3: CI/CD Pipeline -->
             <div class="tech-panel" id="pipeline-panel">
                 <div class="pipeline-container">
-                    <div class="pipeline-title">Automated DevOps Pipeline</div>
-                    <div class="pipeline-stages">
-                        <div class="pipeline-stage" data-stage="1">
-                            <div class="stage-icon">📝</div>
-                            <div class="stage-name">Code Commit</div>
-                            <div class="stage-status">Ready</div>
+                    <div class="pipeline-title">Enterprise CI/CD Pipeline</div>
+
+                    <!-- Main Pipeline Flow -->
+                    <div class="pipeline-flow">
+                        <div class="pipeline-stage-card" data-stage="1">
+                            <div class="stage-header">
+                                <div class="stage-icon-new">
+                                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/>
+                                    </svg>
+                                </div>
+                                <div class="stage-info">
+                                    <div class="stage-name-new">Source Control</div>
+                                    <div class="stage-tech">GitHub</div>
+                                </div>
+                            </div>
+                            <div class="stage-details">
+                                <div class="detail-item">✓ Git Push Trigger</div>
+                                <div class="detail-item">✓ Branch Protection</div>
+                                <div class="detail-item">✓ PR Validation</div>
+                            </div>
+                            <div class="stage-status-new ready">Ready</div>
                         </div>
-                        <div class="pipeline-arrow">→</div>
-                        <div class="pipeline-stage" data-stage="2">
-                            <div class="stage-icon">🔨</div>
-                            <div class="stage-name">Build</div>
-                            <div class="stage-status">Pending</div>
+
+                        <div class="pipeline-connector">
+                            <div class="connector-line"></div>
+                            <div class="connector-arrow">▶</div>
                         </div>
-                        <div class="pipeline-arrow">→</div>
-                        <div class="pipeline-stage" data-stage="3">
-                            <div class="stage-icon">🧪</div>
-                            <div class="stage-name">Test</div>
-                            <div class="stage-status">Pending</div>
+
+                        <div class="pipeline-stage-card" data-stage="2">
+                            <div class="stage-header">
+                                <div class="stage-icon-new">
+                                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <rect x="2" y="3" width="20" height="14" rx="2" ry="2"/>
+                                        <line x1="8" y1="21" x2="16" y2="21"/>
+                                        <line x1="12" y1="17" x2="12" y2="21"/>
+                                    </svg>
+                                </div>
+                                <div class="stage-info">
+                                    <div class="stage-name-new">Build</div>
+                                    <div class="stage-tech">Docker Build</div>
+                                </div>
+                            </div>
+                            <div class="stage-details">
+                                <div class="detail-item">⚙️ Compile Source</div>
+                                <div class="detail-item">📦 Create Artifacts</div>
+                                <div class="detail-item">🐳 Docker Image</div>
+                            </div>
+                            <div class="stage-status-new pending">Pending</div>
                         </div>
-                        <div class="pipeline-arrow">→</div>
-                        <div class="pipeline-stage" data-stage="4">
-                            <div class="stage-icon">🔍</div>
-                            <div class="stage-name">Security Scan</div>
-                            <div class="stage-status">Pending</div>
+
+                        <div class="pipeline-connector">
+                            <div class="connector-line"></div>
+                            <div class="connector-arrow">▶</div>
                         </div>
-                        <div class="pipeline-arrow">→</div>
-                        <div class="pipeline-stage" data-stage="5">
-                            <div class="stage-icon">🚀</div>
-                            <div class="stage-name">Deploy</div>
-                            <div class="stage-status">Pending</div>
+
+                        <div class="pipeline-stage-card" data-stage="3">
+                            <div class="stage-header">
+                                <div class="stage-icon-new">
+                                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                                        <polyline points="22 4 12 14.01 9 11.01"/>
+                                    </svg>
+                                </div>
+                                <div class="stage-info">
+                                    <div class="stage-name-new">Test</div>
+                                    <div class="stage-tech">Jest, Pytest</div>
+                                </div>
+                            </div>
+                            <div class="stage-details">
+                                <div class="detail-item">🧪 Unit Tests</div>
+                                <div class="detail-item">🔗 Integration Tests</div>
+                                <div class="detail-item">📊 Coverage: 85%+</div>
+                            </div>
+                            <div class="stage-status-new pending">Pending</div>
+                        </div>
+
+                        <div class="pipeline-connector">
+                            <div class="connector-line"></div>
+                            <div class="connector-arrow">▶</div>
+                        </div>
+
+                        <div class="pipeline-stage-card" data-stage="4">
+                            <div class="stage-header">
+                                <div class="stage-icon-new">
+                                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <circle cx="12" cy="12" r="10"/>
+                                        <line x1="12" y1="8" x2="12" y2="12"/>
+                                        <line x1="12" y1="16" x2="12.01" y2="16"/>
+                                    </svg>
+                                </div>
+                                <div class="stage-info">
+                                    <div class="stage-name-new">Security Scan</div>
+                                    <div class="stage-tech">Snyk, SonarQube</div>
+                                </div>
+                            </div>
+                            <div class="stage-details">
+                                <div class="detail-item">🔒 SAST Scan</div>
+                                <div class="detail-item">📋 Dependency Check</div>
+                                <div class="detail-item">🛡️ Vulnerability Scan</div>
+                            </div>
+                            <div class="stage-status-new pending">Pending</div>
+                        </div>
+
+                        <div class="pipeline-connector">
+                            <div class="connector-line"></div>
+                            <div class="connector-arrow">▶</div>
+                        </div>
+
+                        <div class="pipeline-stage-card" data-stage="5">
+                            <div class="stage-header">
+                                <div class="stage-icon-new">
+                                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <circle cx="12" cy="12" r="10"/>
+                                        <polygon points="10 8 16 12 10 16 10 8"/>
+                                    </svg>
+                                </div>
+                                <div class="stage-info">
+                                    <div class="stage-name-new">Deploy</div>
+                                    <div class="stage-tech">ECS Fargate</div>
+                                </div>
+                            </div>
+                            <div class="stage-details">
+                                <div class="detail-item">🚀 Push to ECR</div>
+                                <div class="detail-item">♻️ Rolling Update</div>
+                                <div class="detail-item">↩️ Rollback Ready</div>
+                            </div>
+                            <div class="stage-status-new pending">Pending</div>
                         </div>
                     </div>
-                    <button class="run-pipeline-btn" id="runPipeline">▶ Run Pipeline</button>
+
+                    <!-- Pipeline Metrics -->
+                    <div class="pipeline-metrics">
+                        <div class="metric-card">
+                            <div class="metric-value">~8min</div>
+                            <div class="metric-label">Pipeline Duration</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-value">98.5%</div>
+                            <div class="metric-label">Success Rate</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-value">45+</div>
+                            <div class="metric-label">Deploys/Week</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-value">Auto</div>
+                            <div class="metric-label">Rollback</div>
+                        </div>
+                    </div>
+
+                    <button class="run-pipeline-btn" id="runPipeline">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polygon points="5 3 19 12 5 21 5 3"/>
+                        </svg>
+                        Run Pipeline
+                    </button>
                     <div class="pipeline-logs" id="pipelineLogs"></div>
                 </div>
             </div>
 
-            <!-- Panel 4: Skill Graph -->
+            <!-- Panel 4: Tech Stack Proficiency -->
             <div class="tech-panel" id="skillgraph-panel">
-                <div class="skill-graph-container">
-                    <canvas id="skillGraphCanvas"></canvas>
-                    <div class="skill-legend">
-                        <div class="legend-item">
-                            <span class="legend-color" style="background: #61DAFB;"></span> Frontend
+                <div class="skill-proficiency-container">
+                    <div class="proficiency-category">
+                        <h3>⚛️ Frontend Development</h3>
+                        <div class="skill-bars">
+                            <div class="skill-bar-item">
+                                <div class="skill-bar-label">
+                                    <span>React.js</span>
+                                    <span class="skill-percentage">95%</span>
+                                </div>
+                                <div class="skill-bar-track">
+                                    <div class="skill-bar-fill" data-percentage="95" style="width: 0%; background: linear-gradient(90deg, #61DAFB, #0088CC);"></div>
+                                </div>
+                            </div>
+                            <div class="skill-bar-item">
+                                <div class="skill-bar-label">
+                                    <span>TypeScript</span>
+                                    <span class="skill-percentage">90%</span>
+                                </div>
+                                <div class="skill-bar-track">
+                                    <div class="skill-bar-fill" data-percentage="90" style="width: 0%; background: linear-gradient(90deg, #3178C6, #235A97);"></div>
+                                </div>
+                            </div>
+                            <div class="skill-bar-item">
+                                <div class="skill-bar-label">
+                                    <span>Vue.js / Angular</span>
+                                    <span class="skill-percentage">85%</span>
+                                </div>
+                                <div class="skill-bar-track">
+                                    <div class="skill-bar-fill" data-percentage="85" style="width: 0%; background: linear-gradient(90deg, #42B883, #35495E);"></div>
+                                </div>
+                            </div>
                         </div>
-                        <div class="legend-item">
-                            <span class="legend-color" style="background: #339933;"></span> Backend
+                    </div>
+
+                    <div class="proficiency-category">
+                        <h3>⚙️ Backend Development</h3>
+                        <div class="skill-bars">
+                            <div class="skill-bar-item">
+                                <div class="skill-bar-label">
+                                    <span>Node.js / Express</span>
+                                    <span class="skill-percentage">95%</span>
+                                </div>
+                                <div class="skill-bar-track">
+                                    <div class="skill-bar-fill" data-percentage="95" style="width: 0%; background: linear-gradient(90deg, #339933, #5FA04E);"></div>
+                                </div>
+                            </div>
+                            <div class="skill-bar-item">
+                                <div class="skill-bar-label">
+                                    <span>Python / FastAPI</span>
+                                    <span class="skill-percentage">90%</span>
+                                </div>
+                                <div class="skill-bar-track">
+                                    <div class="skill-bar-fill" data-percentage="90" style="width: 0%; background: linear-gradient(90deg, #3776AB, #FFD43B);"></div>
+                                </div>
+                            </div>
+                            <div class="skill-bar-item">
+                                <div class="skill-bar-label">
+                                    <span>GraphQL / REST APIs</span>
+                                    <span class="skill-percentage">92%</span>
+                                </div>
+                                <div class="skill-bar-track">
+                                    <div class="skill-bar-fill" data-percentage="92" style="width: 0%; background: linear-gradient(90deg, #E10098, #C92786);"></div>
+                                </div>
+                            </div>
                         </div>
-                        <div class="legend-item">
-                            <span class="legend-color" style="background: #FF9900;"></span> DevOps/Cloud
+                    </div>
+
+                    <div class="proficiency-category">
+                        <h3>☁️ DevOps & Cloud</h3>
+                        <div class="skill-bars">
+                            <div class="skill-bar-item">
+                                <div class="skill-bar-label">
+                                    <span>AWS (EC2, ECS, Lambda, S3)</span>
+                                    <span class="skill-percentage">93%</span>
+                                </div>
+                                <div class="skill-bar-track">
+                                    <div class="skill-bar-fill" data-percentage="93" style="width: 0%; background: linear-gradient(90deg, #FF9900, #FF6600);"></div>
+                                </div>
+                            </div>
+                            <div class="skill-bar-item">
+                                <div class="skill-bar-label">
+                                    <span>Docker / Kubernetes</span>
+                                    <span class="skill-percentage">88%</span>
+                                </div>
+                                <div class="skill-bar-track">
+                                    <div class="skill-bar-fill" data-percentage="88" style="width: 0%; background: linear-gradient(90deg, #2496ED, #326CE5);"></div>
+                                </div>
+                            </div>
+                            <div class="skill-bar-item">
+                                <div class="skill-bar-label">
+                                    <span>CI/CD (GitHub Actions, Jenkins)</span>
+                                    <span class="skill-percentage">90%</span>
+                                </div>
+                                <div class="skill-bar-track">
+                                    <div class="skill-bar-fill" data-percentage="90" style="width: 0%; background: linear-gradient(90deg, #2088FF, #181717);"></div>
+                                </div>
+                            </div>
                         </div>
-                        <div class="legend-item">
-                            <span class="legend-color" style="background: #47A248;"></span> Database
+                    </div>
+
+                    <div class="proficiency-category">
+                        <h3>💾 Databases</h3>
+                        <div class="skill-bars">
+                            <div class="skill-bar-item">
+                                <div class="skill-bar-label">
+                                    <span>MongoDB</span>
+                                    <span class="skill-percentage">92%</span>
+                                </div>
+                                <div class="skill-bar-track">
+                                    <div class="skill-bar-fill" data-percentage="92" style="width: 0%; background: linear-gradient(90deg, #47A248, #4DB33D);"></div>
+                                </div>
+                            </div>
+                            <div class="skill-bar-item">
+                                <div class="skill-bar-label">
+                                    <span>PostgreSQL / MySQL</span>
+                                    <span class="skill-percentage">85%</span>
+                                </div>
+                                <div class="skill-bar-track">
+                                    <div class="skill-bar-fill" data-percentage="85" style="width: 0%; background: linear-gradient(90deg, #336791, #4169E1);"></div>
+                                </div>
+                            </div>
+                            <div class="skill-bar-item">
+                                <div class="skill-bar-label">
+                                    <span>Redis / DynamoDB</span>
+                                    <span class="skill-percentage">87%</span>
+                                </div>
+                                <div class="skill-bar-track">
+                                    <div class="skill-bar-fill" data-percentage="87" style="width: 0%; background: linear-gradient(90deg, #DC382D, #527FFF);"></div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -3030,39 +3751,47 @@ document.querySelector('[data-tab="architecture"]').addEventListener('click', ()
 // 3. CI/CD PIPELINE SIMULATOR
 
 const runPipelineBtn = document.getElementById('runPipeline');
-const pipelineStages = document.querySelectorAll('.pipeline-stage');
+const pipelineStages = document.querySelectorAll('.pipeline-stage-card');
 const pipelineLogs = document.getElementById('pipelineLogs');
+const pipelineConnectors = document.querySelectorAll('.pipeline-connector');
 
 const pipelineSteps = [
-    {stage: 1, name: 'Code Commit', duration: 1000, logs: [
+    {stage: 1, name: 'Source Control', duration: 1000, logs: [
+        '[INFO] Git push detected on branch: main',
         '[INFO] Fetching latest code from repository...',
-        '[OK] Code checked out successfully',
-        '[OK] Branch: main (commit: a1b2c3d)'
+        '[OK] Code checked out successfully (commit: a1b2c3d)',
+        '[OK] PR validation passed'
     ]},
     {stage: 2, name: 'Build', duration: 2000, logs: [
         '[INFO] Installing dependencies...',
-        '[OK] npm install completed',
+        '[OK] npm install completed (215 packages)',
         '[INFO] Compiling TypeScript...',
+        '[INFO] Building Docker image...',
+        '[OK] Docker image built successfully',
         '[OK] Build artifacts generated'
     ]},
     {stage: 3, name: 'Test', duration: 1500, logs: [
         '[INFO] Running unit tests...',
-        '[OK] 127/127 tests passed',
+        '[OK] 127/127 tests passed ✓',
         '[INFO] Running integration tests...',
-        '[OK] All integration tests passed'
+        '[OK] 45/45 integration tests passed ✓',
+        '[INFO] Code coverage: 87.5%'
     ]},
     {stage: 4, name: 'Security Scan', duration: 1200, logs: [
-        '[INFO] Scanning for vulnerabilities...',
+        '[INFO] Running SAST scan with SonarQube...',
         '[OK] No critical vulnerabilities found',
-        '[INFO] Checking dependencies...',
-        '[OK] All dependencies are secure'
+        '[INFO] Checking dependencies with Snyk...',
+        '[OK] All dependencies are secure',
+        '[INFO] Vulnerability scan complete'
     ]},
     {stage: 5, name: 'Deploy', duration: 1800, logs: [
-        '[INFO] Deploying to production...',
-        '[INFO] Updating ECS tasks...',
+        '[INFO] Pushing image to ECR...',
+        '[OK] Image pushed successfully',
+        '[INFO] Deploying to ECS Fargate...',
+        '[INFO] Rolling update in progress...',
         '[OK] New version deployed',
-        '[OK] Health checks passed',
-        '[SUCCESS] Deployment completed! 🚀'
+        '[OK] Health check passed ✓',
+        '[SUCCESS] Application is live! 🚀'
     ]}
 ];
 
@@ -3072,30 +3801,90 @@ async function runPipeline() {
 
     // Reset all stages
     pipelineStages.forEach(stage => {
-        stage.classList.remove('running', 'success', 'failed');
-        stage.querySelector('.stage-status').textContent = 'Pending';
+        const statusEl = stage.querySelector('.stage-status-new');
+        if (statusEl) {
+            statusEl.classList.remove('running', 'success', 'failed');
+            statusEl.classList.add('pending');
+            statusEl.textContent = 'Pending';
+        }
+        stage.style.borderColor = '';
+        stage.style.transform = '';
+        stage.style.boxShadow = '';
+    });
+
+    // Reset connectors
+    pipelineConnectors.forEach(connector => {
+        const arrow = connector.querySelector('.connector-arrow');
+        if (arrow) arrow.style.opacity = '0.3';
     });
 
     for (const step of pipelineSteps) {
-        const stageEl = document.querySelector(`[data-stage="${step.stage}"]`);
-        stageEl.classList.add('running');
-        stageEl.querySelector('.stage-status').textContent = 'Running';
+        const stageEl = document.querySelector(`.pipeline-stage-card[data-stage="${step.stage}"]`);
+        const statusEl = stageEl ? stageEl.querySelector('.stage-status-new') : null;
 
-        // Add logs
+        if (!stageEl || !statusEl) continue;
+
+        // Start stage
+        statusEl.classList.remove('pending');
+        statusEl.classList.add('running');
+        statusEl.textContent = 'Running';
+        stageEl.style.borderColor = 'var(--accent)';
+        stageEl.style.transform = 'scale(1.02)';
+
+        // Animate connector
+        if (step.stage > 1) {
+            const prevConnector = pipelineConnectors[step.stage - 2];
+            if (prevConnector) {
+                const arrow = prevConnector.querySelector('.connector-arrow');
+                if (arrow) {
+                    arrow.style.opacity = '1';
+                    arrow.style.animation = 'pulse 0.5s ease-in-out 3';
+                }
+            }
+        }
+
+        // Add logs with typing effect
         for (const log of step.logs) {
-            await new Promise(resolve => setTimeout(resolve, 300));
+            await new Promise(resolve => setTimeout(resolve, 250));
             const logLine = document.createElement('div');
             logLine.textContent = log;
+            logLine.style.opacity = '0';
             pipelineLogs.appendChild(logLine);
+
+            // Fade in effect
+            setTimeout(() => {
+                logLine.style.transition = 'opacity 0.3s ease';
+                logLine.style.opacity = '1';
+            }, 10);
+
             pipelineLogs.scrollTop = pipelineLogs.scrollHeight;
         }
 
         await new Promise(resolve => setTimeout(resolve, step.duration));
 
-        stageEl.classList.remove('running');
-        stageEl.classList.add('success');
-        stageEl.querySelector('.stage-status').textContent = 'Success';
+        // Complete stage
+        statusEl.classList.remove('running');
+        statusEl.classList.add('success');
+        statusEl.textContent = 'Success';
+        stageEl.style.borderColor = '#10b981';
+        stageEl.style.transform = 'scale(1)';
+        stageEl.style.boxShadow = '0 0 20px rgba(16, 185, 129, 0.3)';
+
+        // Reset shadow after animation
+        setTimeout(() => {
+            stageEl.style.boxShadow = '';
+        }, 1000);
     }
+
+    // Final success message
+    await new Promise(resolve => setTimeout(resolve, 500));
+    const finalLog = document.createElement('div');
+    finalLog.textContent = '\n🎉 Pipeline completed successfully! Total time: ~8min';
+    finalLog.style.color = '#10b981';
+    finalLog.style.fontWeight = 'bold';
+    finalLog.style.marginTop = '1rem';
+    pipelineLogs.appendChild(finalLog);
+    pipelineLogs.scrollTop = pipelineLogs.scrollHeight;
 
     runPipelineBtn.disabled = false;
 }
@@ -3224,13 +4013,31 @@ if (skillCanvas) {
         requestAnimationFrame(animateSkillGraph);
     }
 
+    // Animate skill proficiency bars whenever skill graph tab is active
+    function animateSkillBars() {
+        // Reset and animate skill proficiency bars
+        document.querySelectorAll('.skill-bar-fill').forEach((bar, index) => {
+            bar.style.width = '0%';
+            setTimeout(() => {
+                bar.style.width = bar.getAttribute('data-percentage') + '%';
+            }, index * 50);
+        });
+    }
+
     // Start animation when skill graph tab is clicked
     document.querySelector('[data-tab="skillgraph"]').addEventListener('click', () => {
         setTimeout(() => {
             resizeSkillCanvas();
             animateSkillGraph();
+            animateSkillBars();
         }, 100);
-    }, {once: true});
+    });
+
+    // Also animate on page load if skill graph tab is the default
+    const skillGraphPanel = document.getElementById('skillgraph-panel');
+    if (skillGraphPanel && skillGraphPanel.classList.contains('active')) {
+        animateSkillBars();
+    }
 }
 
 
