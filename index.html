@@ -595,12 +595,35 @@
         .skill-card {
             padding: 3rem;
             border-radius: 28px;
-            border: 1px solid var(--border);
+            border: 2px solid var(--border);
             background: var(--bg-glass);
             backdrop-filter: saturate(180%) blur(20px);
             transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
             opacity: 0;
             transform: translateY(40px);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .skill-card::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg, var(--accent), #5856d6, #ff2d55, var(--accent));
+            border-radius: 28px;
+            opacity: 0;
+            z-index: -1;
+            transition: opacity 0.5s ease;
+            background-size: 300% 300%;
+            animation: gradientShift 3s ease infinite;
+        }
+
+        @keyframes gradientShift {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
         }
 
         .skill-card.visible {
@@ -609,9 +632,13 @@
         }
 
         .skill-card:hover {
-            transform: translateY(-12px);
-            box-shadow: 0 24px 60px var(--shadow);
-            border-color: var(--accent);
+            transform: translateY(-12px) scale(1.02);
+            box-shadow: 0 32px 80px rgba(0, 113, 227, 0.2);
+            border-color: transparent;
+        }
+
+        .skill-card:hover::before {
+            opacity: 1;
         }
 
         .skill-icon {
@@ -815,10 +842,26 @@
             overflow: hidden;
             background: var(--bg-glass);
             backdrop-filter: saturate(180%) blur(20px);
-            border: 1px solid var(--border);
+            border: 2px solid var(--border);
             transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
             opacity: 0;
             transform: scale(0.9);
+            position: relative;
+        }
+
+        .project-card::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 28px;
+            padding: 2px;
+            background: linear-gradient(135deg, var(--accent), #5856d6, transparent);
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            mask-composite: exclude;
+            opacity: 0;
+            transition: opacity 0.5s ease;
         }
 
         .project-card.visible {
@@ -827,8 +870,13 @@
         }
 
         .project-card:hover {
-            transform: scale(1.03) translateY(-8px);
-            box-shadow: 0 28px 70px var(--shadow);
+            transform: scale(1.05) translateY(-12px);
+            box-shadow: 0 32px 90px rgba(0, 113, 227, 0.25);
+            border-color: var(--accent);
+        }
+
+        .project-card:hover::after {
+            opacity: 1;
         }
 
         .project-image {
@@ -1408,6 +1456,25 @@
     max-height: 200px;
     overflow-y: auto;
     min-height: 100px;
+}
+
+/* Custom sleek scrollbar */
+.pipeline-logs::-webkit-scrollbar {
+    width: 8px;
+}
+
+.pipeline-logs::-webkit-scrollbar-track {
+    background: #2d2d2d;
+    border-radius: 4px;
+}
+
+.pipeline-logs::-webkit-scrollbar-thumb {
+    background: var(--accent);
+    border-radius: 4px;
+}
+
+.pipeline-logs::-webkit-scrollbar-thumb:hover {
+    background: var(--accent-hover);
 }
 
 /* Skill Graph Styles */
@@ -2890,7 +2957,7 @@ const connections = [
 function createConnections() {
     const svg = document.querySelector('.arch-diagram');
 
-    connections.forEach(conn => {
+    connections.forEach((conn, index) => {
         const fromNode = document.querySelector(`[data-service="${conn.from}"]`);
         const toNode = document.querySelector(`[data-service="${conn.to}"]`);
 
@@ -2908,12 +2975,29 @@ function createConnections() {
                 const y2 = parseFloat(toCircle.getAttribute('cy') || toCircle.getAttribute('y')) +
                            (toCircle.hasAttribute('height') ? parseFloat(toCircle.getAttribute('height'))/2 : 0);
 
+                // Create visible connection line
                 const line = document.createElementNS('http://www.w3.org/2000/svg', 'path');
                 const d = `M ${x1} ${y1} L ${x2} ${y2}`;
                 line.setAttribute('d', d);
                 line.setAttribute('class', 'arch-connection');
-                line.setAttribute('stroke-dasharray', '5,5');
+                line.setAttribute('stroke', 'var(--accent)');
+                line.setAttribute('stroke-width', '2');
+                line.setAttribute('opacity', '0.3');
                 svg.insertBefore(line, svg.firstChild);
+
+                // Create animated data flow particle
+                const particle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+                particle.setAttribute('r', '4');
+                particle.setAttribute('fill', 'var(--accent)');
+                particle.setAttribute('opacity', '0.8');
+
+                const animate = document.createElementNS('http://www.w3.org/2000/svg', 'animateMotion');
+                animate.setAttribute('dur', `${2 + index * 0.3}s`);
+                animate.setAttribute('repeatCount', 'indefinite');
+                animate.setAttribute('path', d);
+
+                particle.appendChild(animate);
+                svg.appendChild(particle);
             }
         }
     });
@@ -3061,32 +3145,68 @@ if (skillCanvas) {
     function drawSkillGraph() {
         skillCtx.clearRect(0, 0, skillCanvas.width, skillCanvas.height);
 
-        // Draw connections
-        skillCtx.strokeStyle = 'rgba(100, 100, 100, 0.2)';
-        skillCtx.lineWidth = 2;
+        // Draw connections with gradient
         skillConnections.forEach(([i, j]) => {
+            const gradient = skillCtx.createLinearGradient(
+                skills[i].x, skills[i].y,
+                skills[j].x, skills[j].y
+            );
+            gradient.addColorStop(0, skills[i].color + '40');
+            gradient.addColorStop(1, skills[j].color + '40');
+
+            skillCtx.strokeStyle = gradient;
+            skillCtx.lineWidth = 3;
             skillCtx.beginPath();
             skillCtx.moveTo(skills[i].x, skills[i].y);
             skillCtx.lineTo(skills[j].x, skills[j].y);
             skillCtx.stroke();
         });
 
-        // Draw nodes
+        // Draw nodes with glow effect
         skills.forEach(skill => {
+            // Outer glow
+            const gradient = skillCtx.createRadialGradient(
+                skill.x, skill.y, 20,
+                skill.x, skill.y, 45
+            );
+            gradient.addColorStop(0, skill.color + '80');
+            gradient.addColorStop(1, skill.color + '00');
+
+            skillCtx.fillStyle = gradient;
             skillCtx.beginPath();
-            skillCtx.arc(skill.x, skill.y, 30, 0, Math.PI * 2);
+            skillCtx.arc(skill.x, skill.y, 45, 0, Math.PI * 2);
+            skillCtx.fill();
+
+            // Main node
+            skillCtx.beginPath();
+            skillCtx.arc(skill.x, skill.y, 35, 0, Math.PI * 2);
             skillCtx.fillStyle = skill.color;
             skillCtx.fill();
+
+            // Inner highlight
+            const innerGradient = skillCtx.createRadialGradient(
+                skill.x - 10, skill.y - 10, 0,
+                skill.x, skill.y, 35
+            );
+            innerGradient.addColorStop(0, 'rgba(255, 255, 255, 0.3)');
+            innerGradient.addColorStop(1, 'rgba(255, 255, 255, 0)');
+            skillCtx.fillStyle = innerGradient;
+            skillCtx.fill();
+
+            // Border
             skillCtx.strokeStyle = '#fff';
             skillCtx.lineWidth = 3;
             skillCtx.stroke();
 
-            // Draw text
+            // Draw text with shadow
+            skillCtx.shadowColor = 'rgba(0, 0, 0, 0.5)';
+            skillCtx.shadowBlur = 4;
             skillCtx.fillStyle = '#fff';
-            skillCtx.font = 'bold 12px Arial';
+            skillCtx.font = 'bold 13px -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif';
             skillCtx.textAlign = 'center';
             skillCtx.textBaseline = 'middle';
             skillCtx.fillText(skill.name, skill.x, skill.y);
+            skillCtx.shadowBlur = 0;
         });
     }
 
