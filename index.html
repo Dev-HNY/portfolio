@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hemant Yadav - Full Stack Developer</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><defs><linearGradient id='grad' x1='0%25' y1='0%25' x2='100%25' y2='100%25'><stop offset='0%25' style='stop-color:%230071e3'/><stop offset='100%25' style='stop-color:%235856d6'/></linearGradient></defs><rect width='100' height='100' rx='20' fill='url(%23grad)'/><text x='50' y='70' font-family='Arial,sans-serif' font-size='60' font-weight='bold' fill='white' text-anchor='middle'>HY</text></svg>" type="image/svg+xml">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=SF+Pro+Display:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
@@ -153,11 +154,50 @@
             color: white;
             box-shadow: 0 4px 12px rgba(0, 113, 227, 0.2);
             transition: all 0.3s ease;
+            animation: logo-pulse 3s ease-in-out infinite, logo-float 4s ease-in-out infinite;
+            position: relative;
+        }
+
+        @keyframes logo-pulse {
+            0%, 100% {
+                box-shadow: 0 4px 12px rgba(0, 113, 227, 0.2), 0 0 0 0 rgba(0, 113, 227, 0.4);
+            }
+            50% {
+                box-shadow: 0 6px 20px rgba(0, 113, 227, 0.4), 0 0 0 10px rgba(0, 113, 227, 0);
+            }
+        }
+
+        @keyframes logo-float {
+            0%, 100% {
+                transform: translateY(0px) rotate(0deg);
+            }
+            25% {
+                transform: translateY(-3px) rotate(-2deg);
+            }
+            75% {
+                transform: translateY(-3px) rotate(2deg);
+            }
+        }
+
+        @keyframes logo-spin {
+            0% {
+                transform: rotate(0deg) scale(1);
+            }
+            50% {
+                transform: rotate(180deg) scale(1.2);
+            }
+            100% {
+                transform: rotate(360deg) scale(1);
+            }
         }
 
         .logo:hover .logo-icon {
-            transform: rotate(-5deg) scale(1.05);
-            box-shadow: 0 6px 20px rgba(0, 113, 227, 0.3);
+            animation: logo-spin 0.6s ease-in-out;
+            box-shadow: 0 8px 24px rgba(0, 113, 227, 0.5);
+        }
+
+        .logo-icon.clicked {
+            animation: logo-spin 0.6s ease-in-out, logo-pulse 3s ease-in-out infinite, logo-float 4s ease-in-out infinite;
         }
 
         .logo-text {
@@ -863,6 +903,7 @@
             mask-composite: exclude;
             opacity: 0;
             transition: opacity 0.5s ease;
+            pointer-events: none;
         }
 
         .project-card.visible {
@@ -2598,8 +2639,15 @@
                             <!-- Stage 2: Route 53 -->
                             <div style="display: inline-flex; flex-direction: column; align-items: center; gap: 1rem; vertical-align: top; white-space: normal; width: 200px;">
                                 <div style="font-size: 0.9rem; font-weight: 700; color: var(--accent); text-transform: uppercase;">STAGE 2</div>
-                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="120" height="120" style="filter: drop-shadow(0 4px 12px rgba(77,39,168,0.3));">
-                                    <use xlink:href="#aws-route53" width="120" height="120"/>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="120" height="120" viewBox="0 0 40 40" style="filter: drop-shadow(0 4px 12px rgba(77,39,168,0.3));">
+                                    <defs>
+                                        <linearGradient id="g-route53-inline" x1="0%" y1="100%" x2="100%" y2="0%">
+                                            <stop stop-color="#4D27A8" offset="0%"/>
+                                            <stop stop-color="#A166FF" offset="100%"/>
+                                        </linearGradient>
+                                    </defs>
+                                    <rect width="40" height="40" fill="url(#g-route53-inline)" rx="4"/>
+                                    <path d="M20 6l12 6v10c0 7.2-12 12-12 12S8 29.2 8 22V12l12-6z" fill="#FFF"/>
                                 </svg>
                                 <div style="text-align: center;">
                                     <div style="font-size: 1.1rem; font-weight: 700; color: var(--text-primary); margin-bottom: 0.25rem;">Route 53</div>
@@ -2614,8 +2662,16 @@
                             <!-- Stage 3: WAF -->
                             <div style="display: inline-flex; flex-direction: column; align-items: center; gap: 1rem; vertical-align: top; white-space: normal; width: 200px;">
                                 <div style="font-size: 0.9rem; font-weight: 700; color: #BD0816; text-transform: uppercase;">STAGE 3</div>
-                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="120" height="120" style="filter: drop-shadow(0 4px 12px rgba(189,8,22,0.3));">
-                                    <use xlink:href="#aws-waf" width="120" height="120"/>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="120" height="120" viewBox="0 0 40 40" style="filter: drop-shadow(0 4px 12px rgba(189,8,22,0.3));">
+                                    <defs>
+                                        <linearGradient id="g-waf-inline" x1="0%" y1="100%" x2="100%" y2="0%">
+                                            <stop stop-color="#BD0816" offset="0%"/>
+                                            <stop stop-color="#FF5252" offset="100%"/>
+                                        </linearGradient>
+                                    </defs>
+                                    <rect width="40" height="40" fill="url(#g-waf-inline)" rx="4"/>
+                                    <path d="M20 7l10 5v7c0 6-10 10-10 10S10 25 10 19v-7l10-5z" fill="#FFF"/>
+                                    <path d="M20 14l-2 4h4l-2-4z" fill="#BD0816"/>
                                 </svg>
                                 <div style="text-align: center;">
                                     <div style="font-size: 1.1rem; font-weight: 700; color: var(--text-primary); margin-bottom: 0.25rem;">AWS WAF</div>
@@ -2630,8 +2686,16 @@
                             <!-- Stage 4: CloudFront -->
                             <div style="display: inline-flex; flex-direction: column; align-items: center; gap: 1rem; vertical-align: top; white-space: normal; width: 200px;">
                                 <div style="font-size: 0.9rem; font-weight: 700; color: var(--accent); text-transform: uppercase;">STAGE 4</div>
-                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="120" height="120" style="filter: drop-shadow(0 4px 12px rgba(77,39,168,0.3));">
-                                    <use xlink:href="#aws-cloudfront" width="120" height="120"/>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="120" height="120" viewBox="0 0 40 40" style="filter: drop-shadow(0 4px 12px rgba(77,39,168,0.3));">
+                                    <defs>
+                                        <linearGradient id="g-cloudfront-inline" x1="0%" y1="100%" x2="100%" y2="0%">
+                                            <stop stop-color="#4D27A8" offset="0%"/>
+                                            <stop stop-color="#A166FF" offset="100%"/>
+                                        </linearGradient>
+                                    </defs>
+                                    <rect width="40" height="40" fill="url(#g-cloudfront-inline)" rx="4"/>
+                                    <circle cx="20" cy="20" r="8" fill="#FFF"/>
+                                    <circle cx="20" cy="20" r="4" fill="#4D27A8"/>
                                 </svg>
                                 <div style="text-align: center;">
                                     <div style="font-size: 1.1rem; font-weight: 700; color: var(--text-primary); margin-bottom: 0.25rem;">CloudFront</div>
@@ -2646,8 +2710,19 @@
                             <!-- Stage 5: ALB -->
                             <div style="display: inline-flex; flex-direction: column; align-items: center; gap: 1rem; vertical-align: top; white-space: normal; width: 200px;">
                                 <div style="font-size: 0.9rem; font-weight: 700; color: var(--accent); text-transform: uppercase;">STAGE 5</div>
-                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="120" height="120" style="filter: drop-shadow(0 4px 12px rgba(77,39,170,0.3));">
-                                    <use xlink:href="#aws-alb" width="120" height="120"/>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="120" height="120" viewBox="0 0 48 48" style="filter: drop-shadow(0 4px 12px rgba(77,39,170,0.3));">
+                                    <defs>
+                                        <linearGradient id="g-alb-inline" x1="0%" y1="100%" x2="100%" y2="0%">
+                                            <stop stop-color="#4D27AA" offset="0%"/>
+                                            <stop stop-color="#8B5CF6" offset="100%"/>
+                                        </linearGradient>
+                                    </defs>
+                                    <rect width="48" height="48" fill="url(#g-alb-inline)" rx="6"/>
+                                    <rect x="14" y="18" width="20" height="4" fill="#FFF" rx="1"/>
+                                    <rect x="14" y="26" width="20" height="4" fill="#FFF" rx="1"/>
+                                    <circle cx="10" cy="20" r="2" fill="#FFF"/>
+                                    <circle cx="10" cy="28" r="2" fill="#FFF"/>
+                                    <circle cx="38" cy="24" r="3" fill="#FFF"/>
                                 </svg>
                                 <div style="text-align: center;">
                                     <div style="font-size: 1.1rem; font-weight: 700; color: var(--text-primary); margin-bottom: 0.25rem;">Load Balancer</div>
@@ -2663,12 +2738,30 @@
                             <div style="display: inline-flex; flex-direction: column; align-items: center; gap: 1rem; vertical-align: top; white-space: normal; width: 280px; padding: 1.5rem; background: var(--card-bg); border-radius: 12px; border: 3px dashed var(--accent);">
                                 <div style="font-size: 0.9rem; font-weight: 700; color: var(--accent); text-transform: uppercase;">STAGE 6 - AUTO SCALING</div>
                                 <div style="display: flex; gap: 1rem; align-items: center; justify-content: center;">
-                                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="80" height="80" style="filter: drop-shadow(0 4px 12px rgba(176,8,77,0.3));">
-                                        <use xlink:href="#aws-auto-scaling" width="80" height="80"/>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 40 40" style="filter: drop-shadow(0 4px 12px rgba(176,8,77,0.3));">
+                                        <defs>
+                                            <linearGradient id="g-autoscaling-inline" x1="0%" y1="100%" x2="100%" y2="0%">
+                                                <stop stop-color="#B0084D" offset="0%"/>
+                                                <stop stop-color="#FF4F8B" offset="100%"/>
+                                            </linearGradient>
+                                        </defs>
+                                        <rect width="40" height="40" fill="url(#g-autoscaling-inline)" rx="4"/>
+                                        <path d="M20 10l6 6h-4v8h-4v-8h-4l6-6z" fill="#FFF"/>
+                                        <path d="M20 30l-6-6h4v-8h4v8h4l-6 6z" fill="#FFF" opacity="0.7"/>
                                     </svg>
                                     <div style="font-size: 2rem; color: var(--text-secondary);">+</div>
-                                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="80" height="80" style="filter: drop-shadow(0 4px 12px rgba(200,81,27,0.3));">
-                                        <use xlink:href="#aws-ecs-fargate" width="80" height="80"/>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 40 40" style="filter: drop-shadow(0 4px 12px rgba(200,81,27,0.3));">
+                                        <defs>
+                                            <linearGradient id="g-fargate-inline" x1="0%" y1="100%" x2="100%" y2="0%">
+                                                <stop stop-color="#C8511B" offset="0%"/>
+                                                <stop stop-color="#FF9900" offset="100%"/>
+                                            </linearGradient>
+                                        </defs>
+                                        <rect width="40" height="40" fill="url(#g-fargate-inline)" rx="4"/>
+                                        <rect x="10" y="10" width="8" height="8" fill="#FFF" rx="1"/>
+                                        <rect x="22" y="10" width="8" height="8" fill="#FFF" rx="1"/>
+                                        <rect x="10" y="22" width="8" height="8" fill="#FFF" rx="1"/>
+                                        <rect x="22" y="22" width="8" height="8" fill="#FFF" rx="1"/>
                                     </svg>
                                 </div>
                                 <div style="text-align: center;">
@@ -2688,8 +2781,17 @@
 
                                 <!-- RDS -->
                                 <div style="display: flex; flex-direction: column; align-items: center; gap: 0.5rem;">
-                                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="90" height="90" style="filter: drop-shadow(0 4px 12px rgba(46,39,173,0.3));">
-                                        <use xlink:href="#aws-rds" width="90" height="90"/>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="90" height="90" viewBox="0 0 40 40" style="filter: drop-shadow(0 4px 12px rgba(46,39,173,0.3));">
+                                        <defs>
+                                            <linearGradient id="g-rds-inline" x1="0%" y1="100%" x2="100%" y2="0%">
+                                                <stop stop-color="#2E27AD" offset="0%"/>
+                                                <stop stop-color="#527FFF" offset="100%"/>
+                                            </linearGradient>
+                                        </defs>
+                                        <rect width="40" height="40" fill="url(#g-rds-inline)" rx="4"/>
+                                        <ellipse cx="20" cy="14" rx="10" ry="4" fill="#FFF"/>
+                                        <rect x="10" y="14" width="20" height="14" fill="#FFF"/>
+                                        <ellipse cx="20" cy="28" rx="10" ry="4" fill="#FFF"/>
                                     </svg>
                                     <div style="text-align: center;">
                                         <div style="font-size: 1rem; font-weight: 700; color: var(--text-primary);">RDS PostgreSQL</div>
@@ -2701,8 +2803,18 @@
 
                                 <!-- ElastiCache -->
                                 <div style="display: flex; flex-direction: column; align-items: center; gap: 0.5rem;">
-                                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="90" height="90" style="filter: drop-shadow(0 4px 12px rgba(46,39,173,0.3));">
-                                        <use xlink:href="#aws-elasticache" width="90" height="90"/>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="90" height="90" viewBox="0 0 40 40" style="filter: drop-shadow(0 4px 12px rgba(46,39,173,0.3));">
+                                        <defs>
+                                            <linearGradient id="g-elasticache-inline" x1="0%" y1="100%" x2="100%" y2="0%">
+                                                <stop stop-color="#2E27AD" offset="0%"/>
+                                                <stop stop-color="#527FFF" offset="100%"/>
+                                            </linearGradient>
+                                        </defs>
+                                        <rect width="40" height="40" fill="url(#g-elasticache-inline)" rx="4"/>
+                                        <rect x="12" y="10" width="16" height="5" fill="#FFF" rx="1"/>
+                                        <rect x="12" y="17" width="16" height="5" fill="#FFF" rx="1"/>
+                                        <rect x="12" y="25" width="16" height="5" fill="#FFF" rx="1"/>
+                                        <path d="M30 20l-3 3v-6l3 3z" fill="#FFF"/>
                                     </svg>
                                     <div style="text-align: center;">
                                         <div style="font-size: 1rem; font-weight: 700; color: var(--text-primary);">ElastiCache Redis</div>
@@ -2720,8 +2832,16 @@
 
                                 <!-- S3 -->
                                 <div style="display: flex; flex-direction: column; align-items: center; gap: 0.5rem;">
-                                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="90" height="90" style="filter: drop-shadow(0 4px 12px rgba(27,102,15,0.3));">
-                                        <use xlink:href="#aws-s3" width="90" height="90"/>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="90" height="90" viewBox="0 0 40 40" style="filter: drop-shadow(0 4px 12px rgba(27,102,15,0.3));">
+                                        <defs>
+                                            <linearGradient id="g-s3-inline" x1="0%" y1="100%" x2="100%" y2="0%">
+                                                <stop stop-color="#1B660F" offset="0%"/>
+                                                <stop stop-color="#6CAE3E" offset="100%"/>
+                                            </linearGradient>
+                                        </defs>
+                                        <rect width="40" height="40" fill="url(#g-s3-inline)" rx="4"/>
+                                        <ellipse cx="20" cy="14" rx="10" ry="4" fill="#FFF"/>
+                                        <path d="M10 14v12c0 2.2 4.5 4 10 4s10-1.8 10-4V14" fill="#FFF" opacity="0.8"/>
                                     </svg>
                                     <div style="text-align: center;">
                                         <div style="font-size: 1rem; font-weight: 700; color: var(--text-primary);">Amazon S3</div>
@@ -2733,8 +2853,16 @@
 
                                 <!-- Lambda -->
                                 <div style="display: flex; flex-direction: column; align-items: center; gap: 0.5rem;">
-                                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="90" height="90" style="filter: drop-shadow(0 4px 12px rgba(200,81,27,0.3));">
-                                        <use xlink:href="#aws-lambda" width="90" height="90"/>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="90" height="90" viewBox="0 0 40 40" style="filter: drop-shadow(0 4px 12px rgba(200,81,27,0.3));">
+                                        <defs>
+                                            <linearGradient id="g-lambda-inline" x1="0%" y1="100%" x2="100%" y2="0%">
+                                                <stop stop-color="#C8511B" offset="0%"/>
+                                                <stop stop-color="#FF9900" offset="100%"/>
+                                            </linearGradient>
+                                        </defs>
+                                        <rect width="40" height="40" fill="url(#g-lambda-inline)" rx="4"/>
+                                        <path d="M12 32l6-16h4l6 16h-4l-1-3h-6l-1 3h-4z" fill="#FFF"/>
+                                        <path d="M18 25h4l-2-6z" fill="#C8511B"/>
                                     </svg>
                                     <div style="text-align: center;">
                                         <div style="font-size: 1rem; font-weight: 700; color: var(--text-primary);">AWS Lambda</div>
@@ -2749,8 +2877,18 @@
                             <!-- Stage 9: Monitoring -->
                             <div style="display: inline-flex; flex-direction: column; align-items: center; gap: 1rem; vertical-align: top; white-space: normal; width: 220px;">
                                 <div style="font-size: 0.9rem; font-weight: 700; color: var(--accent); text-transform: uppercase;">STAGE 9</div>
-                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="120" height="120" style="filter: drop-shadow(0 4px 12px rgba(176,8,77,0.3));">
-                                    <use xlink:href="#aws-cloudwatch" width="120" height="120"/>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="120" height="120" viewBox="0 0 40 40" style="filter: drop-shadow(0 4px 12px rgba(176,8,77,0.3));">
+                                    <defs>
+                                        <linearGradient id="g-cloudwatch-inline" x1="0%" y1="100%" x2="100%" y2="0%">
+                                            <stop stop-color="#B0084D" offset="0%"/>
+                                            <stop stop-color="#FF4F8B" offset="100%"/>
+                                        </linearGradient>
+                                    </defs>
+                                    <rect width="40" height="40" fill="url(#g-cloudwatch-inline)" rx="4"/>
+                                    <circle cx="20" cy="20" r="8" fill="#FFF"/>
+                                    <circle cx="20" cy="20" r="4" fill="#B0084D"/>
+                                    <rect x="19" y="12" width="2" height="6" fill="#B0084D"/>
+                                    <rect x="22" y="19" width="6" height="2" fill="#B0084D"/>
                                 </svg>
                                 <div style="text-align: center;">
                                     <div style="font-size: 1.1rem; font-weight: 700; color: var(--text-primary); margin-bottom: 0.25rem;">CloudWatch</div>
@@ -4057,18 +4195,77 @@ if (skillCanvas) {
 }
 
 
-    // AWS Architecture: Vertical Scroll -> Horizontal Scroll
+    // Logo Click Animation
+    const logoIcon = document.querySelector('.logo-icon');
+    const logo = document.querySelector('.logo');
+
+    if (logoIcon && logo) {
+        logo.addEventListener('click', () => {
+            // Scroll to top smoothly
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+
+            // Add clicked class for extra spin
+            logoIcon.classList.add('clicked');
+            setTimeout(() => {
+                logoIcon.classList.remove('clicked');
+            }, 600);
+        });
+    }
+
+    // AWS Architecture: Vertical Scroll -> Horizontal Scroll with Smooth Animation
     const awsFlowContainer = document.querySelector('.aws-horizontal-flow');
     if (awsFlowContainer) {
+        let isScrolling = false;
+        let scrollVelocity = 0;
+
+        // Smooth scroll animation loop
+        function smoothScroll() {
+            if (Math.abs(scrollVelocity) > 0.5) {
+                awsFlowContainer.scrollLeft += scrollVelocity;
+                scrollVelocity *= 0.85; // Easing factor
+                requestAnimationFrame(smoothScroll);
+            } else {
+                isScrolling = false;
+                scrollVelocity = 0;
+            }
+        }
+
         awsFlowContainer.addEventListener('wheel', (e) => {
-            // Prevent default vertical scroll
             e.preventDefault();
 
-            // Convert vertical scroll (deltaY) to horizontal scroll
-            // Multiply by a factor for smoother scrolling
-            const scrollAmount = e.deltaY * 1.5;
-            awsFlowContainer.scrollLeft += scrollAmount;
-        }, { passive: false }); // passive: false allows preventDefault()
+            // Accumulate scroll velocity for smoother feel
+            scrollVelocity += e.deltaY * 1.2;
+
+            // Clamp velocity to prevent too fast scrolling
+            scrollVelocity = Math.max(-50, Math.min(50, scrollVelocity));
+
+            if (!isScrolling) {
+                isScrolling = true;
+                requestAnimationFrame(smoothScroll);
+            }
+        }, { passive: false });
+
+        // Observe stages for fade-in animation as they enter viewport
+        const awsStages = awsFlowContainer.querySelectorAll('[style*="display: inline-flex"]');
+        const stageObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, {
+            root: awsFlowContainer,
+            threshold: 0.2
+        });
+
+        awsStages.forEach((stage, index) => {
+            // Initial hidden state
+            stage.style.opacity = '0';
+            stage.style.transform = 'translateY(30px)';
+            stage.style.transition = `opacity 0.6s ease ${index * 0.1}s, transform 0.6s ease ${index * 0.1}s`;
+            stageObserver.observe(stage);
+        });
     }
 
                 // Form Submission
