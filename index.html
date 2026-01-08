@@ -2089,6 +2089,125 @@
     </style>
 </head>
 <body>
+    <!-- AWS Icons SVG Definitions -->
+    <svg xmlns="http://www.w3.org/2000/svg" style="display:none;">
+      <symbol id="aws-route53" viewBox="0 0 40 40">
+        <defs>
+          <linearGradient id="g-route53" x1="0%" y1="100%" x2="100%" y2="0%">
+            <stop stop-color="#4D27A8" offset="0%"/>
+            <stop stop-color="#A166FF" offset="100%"/>
+          </linearGradient>
+        </defs>
+        <path d="M0 0h40v40H0z" fill="url(#g-route53)"/>
+        <path d="M20 6l12 6v10c0 7.2-12 12-12 12S8 29.2 8 22V12l12-6z" fill="#FFF"/>
+      </symbol>
+
+      <symbol id="aws-waf" viewBox="0 0 40 40">
+        <defs>
+          <linearGradient id="g-waf" x1="0%" y1="100%" x2="100%" y2="0%">
+            <stop stop-color="#BD0816" offset="0%"/>
+            <stop stop-color="#FF5252" offset="100%"/>
+          </linearGradient>
+        </defs>
+        <path d="M0 0h40v40H0z" fill="url(#g-waf)"/>
+        <path d="M20 7l10 5v7c0 6-10 10-10 10S10 25 10 19v-7l10-5z" fill="#FFF"/>
+      </symbol>
+
+      <symbol id="aws-cloudfront" viewBox="0 0 40 40">
+        <defs>
+          <linearGradient id="g-cloudfront" x1="0%" y1="100%" x2="100%" y2="0%">
+            <stop stop-color="#4D27A8" offset="0%"/>
+            <stop stop-color="#A166FF" offset="100%"/>
+          </linearGradient>
+        </defs>
+        <path d="M0 0h40v40H0z" fill="url(#g-cloudfront)"/>
+        <circle cx="20" cy="20" r="7" fill="#FFF"/>
+      </symbol>
+
+      <symbol id="aws-alb" viewBox="0 0 48 48">
+        <circle cx="24" cy="24" r="20" fill="#4D27AA"/>
+        <rect x="14" y="18" width="20" height="12" fill="#FFF"/>
+      </symbol>
+
+      <symbol id="aws-ecs-fargate" viewBox="0 0 40 40">
+        <defs>
+          <linearGradient id="g-fargate" x1="0%" y1="100%" x2="100%" y2="0%">
+            <stop stop-color="#C8511B" offset="0%"/>
+            <stop stop-color="#FF9900" offset="100%"/>
+          </linearGradient>
+        </defs>
+        <path d="M0 0h40v40H0z" fill="url(#g-fargate)"/>
+        <rect x="12" y="12" width="16" height="16" fill="#FFF"/>
+      </symbol>
+
+      <symbol id="aws-auto-scaling" viewBox="0 0 40 40">
+        <defs>
+          <linearGradient id="g-autoscaling" x1="0%" y1="100%" x2="100%" y2="0%">
+            <stop stop-color="#B0084D" offset="0%"/>
+            <stop stop-color="#FF4F8B" offset="100%"/>
+          </linearGradient>
+        </defs>
+        <path d="M0 0h40v40H0z" fill="url(#g-autoscaling)"/>
+        <path d="M20 10l6 6h-4v8h-4v-8h-4l6-6z" fill="#FFF"/>
+      </symbol>
+
+      <symbol id="aws-rds" viewBox="0 0 40 40">
+        <defs>
+          <linearGradient id="g-rds" x1="0%" y1="100%" x2="100%" y2="0%">
+            <stop stop-color="#2E27AD" offset="0%"/>
+            <stop stop-color="#527FFF" offset="100%"/>
+          </linearGradient>
+        </defs>
+        <path d="M0 0h40v40H0z" fill="url(#g-rds)"/>
+        <ellipse cx="20" cy="14" rx="8" ry="4" fill="#FFF"/>
+        <rect x="12" y="14" width="16" height="12" fill="#FFF"/>
+      </symbol>
+
+      <symbol id="aws-elasticache" viewBox="0 0 40 40">
+        <defs>
+          <linearGradient id="g-elasticache" x1="0%" y1="100%" x2="100%" y2="0%">
+            <stop stop-color="#2E27AD" offset="0%"/>
+            <stop stop-color="#527FFF" offset="100%"/>
+          </linearGradient>
+        </defs>
+        <path d="M0 0h40v40H0z" fill="url(#g-elasticache)"/>
+        <rect x="12" y="10" width="16" height="20" fill="#FFF"/>
+      </symbol>
+
+      <symbol id="aws-s3" viewBox="0 0 40 40">
+        <defs>
+          <linearGradient id="g-s3" x1="0%" y1="100%" x2="100%" y2="0%">
+            <stop stop-color="#1B660F" offset="0%"/>
+            <stop stop-color="#6CAE3E" offset="100%"/>
+          </linearGradient>
+        </defs>
+        <path d="M0 0h40v40H0z" fill="url(#g-s3)"/>
+        <ellipse cx="20" cy="14" rx="8" ry="4" fill="#FFF"/>
+      </symbol>
+
+      <symbol id="aws-lambda" viewBox="0 0 40 40">
+        <defs>
+          <linearGradient id="g-lambda" x1="0%" y1="100%" x2="100%" y2="0%">
+            <stop stop-color="#C8511B" offset="0%"/>
+            <stop stop-color="#FF9900" offset="100%"/>
+          </linearGradient>
+        </defs>
+        <path d="M0 0h40v40H0z" fill="url(#g-lambda)"/>
+        <path d="M14 30l6-14 6 14h-4l-2-6-2 6h-4z" fill="#FFF"/>
+      </symbol>
+
+      <symbol id="aws-cloudwatch" viewBox="0 0 40 40">
+        <defs>
+          <linearGradient id="g-cloudwatch" x1="0%" y1="100%" x2="100%" y2="0%">
+            <stop stop-color="#B0084D" offset="0%"/>
+            <stop stop-color="#FF4F8B" offset="100%"/>
+          </linearGradient>
+        </defs>
+        <path d="M0 0h40v40H0z" fill="url(#g-cloudwatch)"/>
+        <circle cx="20" cy="20" r="6" fill="#FFF"/>
+      </symbol>
+    </svg>
+
     <!-- Loader -->
     <div class="loader">
         <div class="loader-spinner"></div>
@@ -2108,6 +2227,7 @@
             <ul class="nav-links">
                 <li><a href="#home">Home</a></li>
                 <li><a href="#skills">Skills</a></li>
+                <li><a href="#experience">Experience</a></li>
                 <li><a href="#projects">Projects</a></li>
                 <li><a href="#interactive">Interactive</a></li>
                 <li><a href="#contact">Contact</a></li>
@@ -2443,335 +2563,231 @@
                 </div>
             </div>
 
-            <!-- Panel 2: AWS Architecture -->
+                        <!-- Panel 2: AWS Architecture -->
             <div class="tech-panel" id="architecture-panel">
-                <div class="architecture-canvas">
-                    <div class="arch-title">Enterprise-Grade AWS Architecture</div>
-                    <svg class="arch-diagram" viewBox="0 0 1200 750" style="max-height: 600px;">
-                        <!-- Define gradients for AWS services -->
-                        <defs>
-                            <linearGradient id="awsOrange" x1="0%" y1="0%" x2="100%" y2="100%">
-                                <stop offset="0%" style="stop-color:#FF9900;stop-opacity:0.3" />
-                                <stop offset="100%" style="stop-color:#FF9900;stop-opacity:0.1" />
-                            </linearGradient>
-                            <linearGradient id="awsBlue" x1="0%" y1="0%" x2="100%" y2="100%">
-                                <stop offset="0%" style="stop-color:#527FFF;stop-opacity:0.3" />
-                                <stop offset="100%" style="stop-color:#527FFF;stop-opacity:0.1" />
-                            </linearGradient>
-                            <linearGradient id="awsGreen" x1="0%" y1="0%" x2="100%" y2="100%">
-                                <stop offset="0%" style="stop-color:#569A31;stop-opacity:0.3" />
-                                <stop offset="100%" style="stop-color:#569A31;stop-opacity:0.1" />
-                            </linearGradient>
-                            <linearGradient id="awsPurple" x1="0%" y1="0%" x2="100%" y2="100%">
-                                <stop offset="0%" style="stop-color:#C925D1;stop-opacity:0.3" />
-                                <stop offset="100%" style="stop-color:#C925D1;stop-opacity:0.1" />
-                            </linearGradient>
-                        </defs>
+                <div style="padding: 2rem 1.5rem;">
+                    <div style="text-align: center; font-size: 1.5rem; font-weight: 700; margin-bottom: 0.5rem; color: var(--text-primary);">
+                        Production-Ready AWS Architecture
+                    </div>
+                    <div style="text-align: center; font-size: 1rem; color: var(--text-secondary); margin-bottom: 2.5rem;">
+                        Scalable • Optimized • Secured | Scroll horizontally to see end-to-end flow →
+                    </div>
 
-                        <!-- Layer 1: Users & DNS -->
-                        <g class="arch-layer">
-                            <!-- Users -->
-                            <g class="arch-node" data-service="users">
-                                <circle cx="80" cy="350" r="35" fill="#0071e3" opacity="0.2" stroke="var(--accent)" stroke-width="2"/>
-                                <text x="80" y="360" text-anchor="middle" fill="var(--text-primary)" font-size="38">👥</text>
-                                <text x="80" y="405" text-anchor="middle" fill="var(--text-secondary)" font-size="14" font-weight="700">End Users</text>
-                            </g>
+                    <!-- Horizontal Scrollable Architecture Flow -->
+                    <div class="aws-horizontal-flow" style="overflow-x: auto; overflow-y: hidden; padding: 2rem 0; scroll-behavior: smooth; background: var(--bg-secondary); border-radius: 16px; border: 2px solid var(--border);">
 
-                            <!-- Route 53 DNS -->
-                            <g class="arch-node" data-service="route53">
-                                <rect x="160" y="315" width="90" height="80" rx="10" fill="url(#awsOrange)" stroke="#FF9900" stroke-width="2"/>
-                                <text x="205" y="350" text-anchor="middle" fill="var(--text-primary)" font-size="32">🌐</text>
-                                <text x="205" y="372" text-anchor="middle" fill="var(--text-primary)" font-size="13" font-weight="bold">Route 53</text>
-                                <text x="205" y="388" text-anchor="middle" fill="var(--text-secondary)" font-size="11">DNS</text>
-                            </g>
-                        </g>
+                        <!-- Flow Container -->
+                        <div style="display: inline-flex; align-items: center; gap: 3rem; padding: 2rem 3rem; min-width: max-content;">
 
-                        <!-- Layer 2: CDN & Security -->
-                        <g class="arch-layer">
-                            <!-- WAF -->
-                            <g class="arch-node" data-service="waf">
-                                <rect x="290" y="220" width="90" height="80" rx="10" fill="url(#awsOrange)" stroke="#FF4500" stroke-width="2"/>
-                                <text x="335" y="255" text-anchor="middle" fill="var(--text-primary)" font-size="30">🛡️</text>
-                                <text x="335" y="277" text-anchor="middle" fill="var(--text-primary)" font-size="13" font-weight="bold">WAF</text>
-                                <text x="335" y="293" text-anchor="middle" fill="var(--text-secondary)" font-size="10">Security</text>
-                            </g>
-
-                            <!-- CloudFront CDN -->
-                            <g class="arch-node" data-service="cloudfront">
-                                <rect x="290" y="360" width="90" height="80" rx="10" fill="url(#awsOrange)" stroke="#FF9900" stroke-width="2"/>
-                                <text x="335" y="395" text-anchor="middle" fill="var(--text-primary)" font-size="32">☁️</text>
-                                <text x="335" y="417" text-anchor="middle" fill="var(--text-primary)" font-size="13" font-weight="bold">CloudFront</text>
-                                <text x="335" y="433" text-anchor="middle" fill="var(--text-secondary)" font-size="10">CDN</text>
-                            </g>
-                        </g>
-
-                        <!-- Layer 3: Load Balancing -->
-                        <g class="arch-layer">
-                            <!-- Application Load Balancer -->
-                            <g class="arch-node" data-service="alb">
-                                <rect x="420" y="315" width="95" height="80" rx="10" fill="url(#awsOrange)" stroke="#FF9900" stroke-width="2"/>
-                                <text x="467.5" y="350" text-anchor="middle" fill="var(--text-primary)" font-size="34">⚖️</text>
-                                <text x="467.5" y="373" text-anchor="middle" fill="var(--text-primary)" font-size="13" font-weight="bold">ALB</text>
-                                <text x="467.5" y="389" text-anchor="middle" fill="var(--text-secondary)" font-size="10">Load Balancer</text>
-                            </g>
-                        </g>
-
-                        <!-- Layer 4: Auto Scaling Group -->
-                        <g class="arch-layer">
-                            <!-- Auto Scaling Group Container -->
-                            <rect x="550" y="200" width="260" height="300" rx="12" fill="none" stroke="var(--accent)" stroke-width="3" stroke-dasharray="10,6"/>
-                            <text x="680" y="225" text-anchor="middle" fill="var(--accent)" font-size="14" font-weight="bold">⚙️ Auto Scaling Group</text>
-                            <text x="680" y="245" text-anchor="middle" fill="var(--text-secondary)" font-size="11">Min: 2 | Desired: 4 | Max: 10</text>
-
-                            <!-- ECS Fargate Container 1 -->
-                            <g class="arch-node" data-service="ecs1">
-                                <rect x="565" y="265" width="100" height="85" rx="10" fill="url(#awsOrange)" stroke="#FF9900" stroke-width="2"/>
-                                <text x="615" y="303" text-anchor="middle" fill="var(--text-primary)" font-size="36">🐳</text>
-                                <text x="615" y="327" text-anchor="middle" fill="var(--text-primary)" font-size="12" font-weight="bold">ECS Fargate</text>
-                                <text x="615" y="343" text-anchor="middle" fill="var(--text-secondary)" font-size="10">Container 1</text>
-                            </g>
-
-                            <!-- ECS Fargate Container 2 -->
-                            <g class="arch-node" data-service="ecs2">
-                                <rect x="695" y="265" width="100" height="85" rx="10" fill="url(#awsOrange)" stroke="#FF9900" stroke-width="2"/>
-                                <text x="745" y="303" text-anchor="middle" fill="var(--text-primary)" font-size="36">🐳</text>
-                                <text x="745" y="327" text-anchor="middle" fill="var(--text-primary)" font-size="12" font-weight="bold">ECS Fargate</text>
-                                <text x="745" y="343" text-anchor="middle" fill="var(--text-secondary)" font-size="10">Container 2</text>
-                            </g>
-
-                            <!-- ECS Fargate Container 3 -->
-                            <g class="arch-node" data-service="ecs3">
-                                <rect x="565" y="380" width="100" height="85" rx="10" fill="url(#awsOrange)" stroke="#FF9900" stroke-width="2" opacity="0.6"/>
-                                <text x="615" y="418" text-anchor="middle" fill="var(--text-primary)" font-size="36">🐳</text>
-                                <text x="615" y="442" text-anchor="middle" fill="var(--text-primary)" font-size="12" font-weight="bold">ECS Fargate</text>
-                                <text x="615" y="458" text-anchor="middle" fill="var(--text-secondary)" font-size="10">Scaling...</text>
-                            </g>
-
-                            <!-- ECS Fargate Container 4 -->
-                            <g class="arch-node" data-service="ecs4">
-                                <rect x="695" y="380" width="100" height="85" rx="10" fill="url(#awsOrange)" stroke="#FF9900" stroke-width="2" opacity="0.6"/>
-                                <text x="745" y="418" text-anchor="middle" fill="var(--text-primary)" font-size="36">🐳</text>
-                                <text x="745" y="442" text-anchor="middle" fill="var(--text-primary)" font-size="12" font-weight="bold">ECS Fargate</text>
-                                <text x="745" y="458" text-anchor="middle" fill="var(--text-secondary)" font-size="10">Scaling...</text>
-                            </g>
-                        </g>
-
-                        <!-- Layer 5: Data Layer -->
-                        <g class="arch-layer">
-                            <!-- RDS Multi-AZ -->
-                            <g class="arch-node" data-service="rds">
-                                <rect x="845" y="245" width="105" height="95" rx="10" fill="url(#awsBlue)" stroke="#527FFF" stroke-width="2"/>
-                                <text x="897.5" y="287" text-anchor="middle" fill="var(--text-primary)" font-size="40">💾</text>
-                                <text x="897.5" y="312" text-anchor="middle" fill="var(--text-primary)" font-size="13" font-weight="bold">RDS</text>
-                                <text x="897.5" y="327" text-anchor="middle" fill="var(--text-secondary)" font-size="10">PostgreSQL</text>
-                                <text x="897.5" y="340" text-anchor="middle" fill="var(--text-secondary)" font-size="10">Multi-AZ</text>
-                            </g>
-
-                            <!-- ElastiCache Redis -->
-                            <g class="arch-node" data-service="redis">
-                                <rect x="845" y="370" width="105" height="95" rx="10" fill="url(#awsPurple)" stroke="#C925D1" stroke-width="2"/>
-                                <text x="897.5" y="412" text-anchor="middle" fill="var(--text-primary)" font-size="38">⚡</text>
-                                <text x="897.5" y="437" text-anchor="middle" fill="var(--text-primary)" font-size="13" font-weight="bold">ElastiCache</text>
-                                <text x="897.5" y="452" text-anchor="middle" fill="var(--text-secondary)" font-size="10">Redis Cluster</text>
-                            </g>
-                        </g>
-
-                        <!-- Layer 6: Storage & Serverless -->
-                        <g class="arch-layer">
-                            <!-- S3 Storage -->
-                            <g class="arch-node" data-service="s3">
-                                <rect x="980" y="245" width="100" height="95" rx="10" fill="url(#awsGreen)" stroke="#569A31" stroke-width="2"/>
-                                <text x="1030" y="287" text-anchor="middle" fill="var(--text-primary)" font-size="38">📦</text>
-                                <text x="1030" y="312" text-anchor="middle" fill="var(--text-primary)" font-size="13" font-weight="bold">S3</text>
-                                <text x="1030" y="327" text-anchor="middle" fill="var(--text-secondary)" font-size="10">Object Storage</text>
-                            </g>
-
-                            <!-- Lambda Functions -->
-                            <g class="arch-node" data-service="lambda">
-                                <rect x="980" y="370" width="100" height="95" rx="10" fill="url(#awsOrange)" stroke="#FF9900" stroke-width="2"/>
-                                <text x="1030" y="412" text-anchor="middle" fill="var(--text-primary)" font-size="42">λ</text>
-                                <text x="1030" y="437" text-anchor="middle" fill="var(--text-primary)" font-size="13" font-weight="bold">Lambda</text>
-                                <text x="1030" y="452" text-anchor="middle" fill="var(--text-secondary)" font-size="10">Serverless</text>
-                            </g>
-                        </g>
-
-                        <!-- Layer 7: Monitoring -->
-                        <g class="arch-layer">
-                            <!-- CloudWatch -->
-                            <g class="arch-node" data-service="cloudwatch">
-                                <rect x="1105" y="295" width="100" height="105" rx="10" fill="url(#awsPurple)" stroke="#C925D1" stroke-width="2"/>
-                                <text x="1155" y="342" text-anchor="middle" fill="var(--text-primary)" font-size="40">📊</text>
-                                <text x="1155" y="367" text-anchor="middle" fill="var(--text-primary)" font-size="13" font-weight="bold">CloudWatch</text>
-                                <text x="1155" y="382" text-anchor="middle" fill="var(--text-secondary)" font-size="10">Monitoring</text>
-                                <text x="1155" y="395" text-anchor="middle" fill="var(--text-secondary)" font-size="10">& Alerts</text>
-                            </g>
-                        </g>
-
-                        <!-- Connection Lines with Data Flow -->
-                        <g class="arch-connections">
-                            <!-- Flow 1: Users to Route 53 -->
-                            <path id="flow1" d="M 115 350 L 160 350" stroke="var(--accent)" stroke-width="3" fill="none" opacity="0.8" marker-end="url(#arrowhead)"/>
-                            <text x="137" y="340" text-anchor="middle" fill="var(--accent)" font-size="10" font-weight="600">DNS Query</text>
-
-                            <!-- Flow 2: Route 53 to CloudFront -->
-                            <path id="flow2" d="M 250 350 L 290 400" stroke="var(--accent)" stroke-width="3" fill="none" opacity="0.8" marker-end="url(#arrowhead)"/>
-                            <text x="265" y="370" text-anchor="middle" fill="var(--accent)" font-size="10" font-weight="600">Request</text>
-
-                            <!-- Flow 3: Route 53 to WAF -->
-                            <path id="flow3" d="M 250 350 L 290 260" stroke="#FF4500" stroke-width="3" fill="none" opacity="0.8" marker-end="url(#arrowhead-waf)"/>
-                            <text x="270" y="300" text-anchor="middle" fill="#FF4500" font-size="10" font-weight="600">Security</text>
-
-                            <!-- Flow 4: CloudFront to ALB -->
-                            <path id="flow4" d="M 380 400 L 420 355" stroke="var(--accent)" stroke-width="3" fill="none" opacity="0.8" marker-end="url(#arrowhead)"/>
-                            <text x="395" y="370" text-anchor="middle" fill="var(--accent)" font-size="10" font-weight="600">Traffic</text>
-
-                            <!-- Flow 5: ALB to Containers -->
-                            <path id="flow5" d="M 515 350 L 565 307" stroke="#10b981" stroke-width="3" fill="none" opacity="0.8" marker-end="url(#arrowhead-green)"/>
-                            <text x="535" y="323" text-anchor="middle" fill="#10b981" font-size="9" font-weight="600">Load Balance</text>
-
-                            <path id="flow6" d="M 515 350 L 695 307" stroke="#10b981" stroke-width="3" fill="none" opacity="0.8" marker-end="url(#arrowhead-green)"/>
-
-                            <path id="flow7" d="M 515 355 L 565 418" stroke="#10b981" stroke-width="3" fill="none" opacity="0.8" marker-end="url(#arrowhead-green)" stroke-dasharray="5,3"/>
-
-                            <path id="flow8" d="M 515 355 L 695 418" stroke="#10b981" stroke-width="3" fill="none" opacity="0.8" marker-end="url(#arrowhead-green)" stroke-dasharray="5,3"/>
-
-                            <!-- Flow 9: Containers to RDS -->
-                            <path id="flow9" d="M 665 307 L 845 292" stroke="#527FFF" stroke-width="3" fill="none" opacity="0.8" marker-end="url(#arrowhead-blue)"/>
-                            <text x="750" y="295" text-anchor="middle" fill="#527FFF" font-size="10" font-weight="600">Database Queries</text>
-
-                            <path id="flow10" d="M 795 307 L 845 292" stroke="#527FFF" stroke-width="3" fill="none" opacity="0.8" marker-end="url(#arrowhead-blue)"/>
-
-                            <!-- Flow 11: Containers to Redis -->
-                            <path id="flow11" d="M 665 418 L 845 417" stroke="#C925D1" stroke-width="3" fill="none" opacity="0.8" marker-end="url(#arrowhead-purple)"/>
-                            <text x="750" y="413" text-anchor="middle" fill="#C925D1" font-size="10" font-weight="600">Cache</text>
-
-                            <path id="flow12" d="M 795 418 L 845 417" stroke="#C925D1" stroke-width="3" fill="none" opacity="0.8" marker-end="url(#arrowhead-purple)"/>
-
-                            <!-- Flow 13: Containers to S3 -->
-                            <path id="flow13" d="M 665 292 L 980 287" stroke="#569A31" stroke-width="3" fill="none" opacity="0.8" marker-end="url(#arrowhead-green2)"/>
-                            <text x="820" y="280" text-anchor="middle" fill="#569A31" font-size="10" font-weight="600">Static Assets</text>
-
-                            <!-- Flow 14: To Lambda -->
-                            <path id="flow14" d="M 795 432 L 980 417" stroke="#FF9900" stroke-width="3" fill="none" opacity="0.8" marker-end="url(#arrowhead-orange)"/>
-                            <text x="885" y="420" text-anchor="middle" fill="#FF9900" font-size="10" font-weight="600">Events</text>
-
-                            <!-- Flow 15: To CloudWatch (Monitoring) -->
-                            <path id="flow15" d="M 950 292 L 1105 340" stroke="#C925D1" stroke-width="2" fill="none" opacity="0.6" stroke-dasharray="6,4" marker-end="url(#arrowhead-purple)"/>
-                            <text x="1025" y="310" text-anchor="middle" fill="#C925D1" font-size="9" font-weight="600">Logs</text>
-
-                            <path id="flow16" d="M 1080 417 L 1105 380" stroke="#C925D1" stroke-width="2" fill="none" opacity="0.6" stroke-dasharray="6,4" marker-end="url(#arrowhead-purple)"/>
-                            <text x="1090" y="400" text-anchor="middle" fill="#C925D1" font-size="9" font-weight="600">Metrics</text>
-
-                            <!-- Animated data flow particles -->
-                            <circle r="6" fill="var(--accent)" opacity="0.9">
-                                <animateMotion dur="3s" repeatCount="indefinite" path="M 115 350 L 160 350 L 250 350 L 290 400 L 380 400 L 420 355 L 515 350 L 565 307"/>
-                            </circle>
-
-                            <circle r="6" fill="#10b981" opacity="0.9">
-                                <animateMotion dur="3.5s" repeatCount="indefinite" path="M 515 350 L 695 307 L 795 307 L 845 292"/>
-                            </circle>
-
-                            <circle r="6" fill="#527FFF" opacity="0.9">
-                                <animateMotion dur="2.5s" repeatCount="indefinite" begin="0.5s" path="M 665 307 L 845 292"/>
-                            </circle>
-
-                            <circle r="6" fill="#C925D1" opacity="0.9">
-                                <animateMotion dur="2.8s" repeatCount="indefinite" begin="1s" path="M 665 418 L 845 417"/>
-                            </circle>
-
-                            <circle r="6" fill="#569A31" opacity="0.9">
-                                <animateMotion dur="3.2s" repeatCount="indefinite" begin="0.7s" path="M 665 292 L 980 287"/>
-                            </circle>
-                        </g>
-
-                        <!-- Arrow marker definitions -->
-                        <defs>
-                            <marker id="arrowhead" markerWidth="12" markerHeight="12" refX="10" refY="4" orient="auto">
-                                <polygon points="0 0, 12 4, 0 8" fill="var(--accent)" />
-                            </marker>
-                            <marker id="arrowhead-green" markerWidth="12" markerHeight="12" refX="10" refY="4" orient="auto">
-                                <polygon points="0 0, 12 4, 0 8" fill="#10b981" />
-                            </marker>
-                            <marker id="arrowhead-blue" markerWidth="12" markerHeight="12" refX="10" refY="4" orient="auto">
-                                <polygon points="0 0, 12 4, 0 8" fill="#527FFF" />
-                            </marker>
-                            <marker id="arrowhead-purple" markerWidth="12" markerHeight="12" refX="10" refY="4" orient="auto">
-                                <polygon points="0 0, 12 4, 0 8" fill="#C925D1" />
-                            </marker>
-                            <marker id="arrowhead-orange" markerWidth="12" markerHeight="12" refX="10" refY="4" orient="auto">
-                                <polygon points="0 0, 12 4, 0 8" fill="#FF9900" />
-                            </marker>
-                            <marker id="arrowhead-green2" markerWidth="12" markerHeight="12" refX="10" refY="4" orient="auto">
-                                <polygon points="0 0, 12 4, 0 8" fill="#569A31" />
-                            </marker>
-                            <marker id="arrowhead-waf" markerWidth="12" markerHeight="12" refX="10" refY="4" orient="auto">
-                                <polygon points="0 0, 12 4, 0 8" fill="#FF4500" />
-                            </marker>
-                        </defs>
-
-                        <!-- Auto-scaling indicators -->
-                        <g class="scaling-indicators">
-                            <text x="680" y="520" text-anchor="middle" fill="var(--accent)" font-size="13" font-weight="bold">📈 Auto-Scaling Active</text>
-                            <text x="680" y="538" text-anchor="middle" fill="var(--text-secondary)" font-size="11">CPU &gt; 70% → Scale Up | CPU &lt; 30% → Scale Down</text>
-                        </g>
-                    </svg>
-
-                    <div class="arch-legend">
-                        <div class="flow-legend">
-                            <h4 style="font-size: 0.95rem; font-weight: 700; margin-bottom: 0.75rem; color: var(--text-primary);">Data Flow Legend</h4>
-                            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 0.5rem;">
-                                <div style="display: flex; align-items: center; gap: 0.5rem;">
-                                    <div style="width: 30px; height: 3px; background: var(--accent);"></div>
-                                    <span style="font-size: 0.8rem; color: var(--text-secondary);">User Traffic</span>
-                                </div>
-                                <div style="display: flex; align-items: center; gap: 0.5rem;">
-                                    <div style="width: 30px; height: 3px; background: #10b981;"></div>
-                                    <span style="font-size: 0.8rem; color: var(--text-secondary);">Load Balanced</span>
-                                </div>
-                                <div style="display: flex; align-items: center; gap: 0.5rem;">
-                                    <div style="width: 30px; height: 3px; background: #527FFF;"></div>
-                                    <span style="font-size: 0.8rem; color: var(--text-secondary);">DB Queries</span>
-                                </div>
-                                <div style="display: flex; align-items: center; gap: 0.5rem;">
-                                    <div style="width: 30px; height: 3px; background: #C925D1;"></div>
-                                    <span style="font-size: 0.8rem; color: var(--text-secondary);">Cache/Logs</span>
-                                </div>
-                                <div style="display: flex; align-items: center; gap: 0.5rem;">
-                                    <div style="width: 30px; height: 3px; background: #569A31;"></div>
-                                    <span style="font-size: 0.8rem; color: var(--text-secondary);">Static Assets</span>
-                                </div>
-                                <div style="display: flex; align-items: center; gap: 0.5rem;">
-                                    <div style="width: 30px; height: 3px; background: #FF4500;"></div>
-                                    <span style="font-size: 0.8rem; color: var(--text-secondary);">Security</span>
+                            <!-- Stage 1: Users -->
+                            <div style="display: inline-flex; flex-direction: column; align-items: center; gap: 1rem; vertical-align: top; white-space: normal; width: 200px;">
+                                <div style="font-size: 0.9rem; font-weight: 700; color: var(--accent); text-transform: uppercase;">STAGE 1</div>
+                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="120" height="120" style="filter: drop-shadow(0 4px 12px rgba(0,113,227,0.3));">
+                                    <circle cx="60" cy="60" r="60" fill="#0071e3"/>
+                                    <text x="60" y="75" text-anchor="middle" font-size="48" fill="#FFF">👥</text>
+                                </svg>
+                                <div style="text-align: center;">
+                                    <div style="font-size: 1.1rem; font-weight: 700; color: var(--text-primary); margin-bottom: 0.25rem;">End Users</div>
+                                    <div style="font-size: 0.85rem; color: var(--text-secondary);">Millions of requests</div>
                                 </div>
                             </div>
+
+                            <!-- Arrow -->
+                            <div style="font-size: 3rem; color: var(--accent); animation: pulse 2s ease-in-out infinite;">→</div>
+
+                            <!-- Stage 2: Route 53 -->
+                            <div style="display: inline-flex; flex-direction: column; align-items: center; gap: 1rem; vertical-align: top; white-space: normal; width: 200px;">
+                                <div style="font-size: 0.9rem; font-weight: 700; color: var(--accent); text-transform: uppercase;">STAGE 2</div>
+                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="120" height="120" style="filter: drop-shadow(0 4px 12px rgba(77,39,168,0.3));">
+                                    <use xlink:href="#aws-route53" width="120" height="120"/>
+                                </svg>
+                                <div style="text-align: center;">
+                                    <div style="font-size: 1.1rem; font-weight: 700; color: var(--text-primary); margin-bottom: 0.25rem;">Route 53</div>
+                                    <div style="font-size: 0.85rem; color: var(--text-secondary);">DNS Resolution</div>
+                                    <div style="font-size: 0.75rem; color: var(--text-secondary); margin-top: 0.5rem;">✓ Low latency &lt;10ms</div>
+                                </div>
+                            </div>
+
+                            <!-- Arrow -->
+                            <div style="font-size: 3rem; color: var(--accent); animation: pulse 2s ease-in-out infinite; animation-delay: 0.3s;">→</div>
+
+                            <!-- Stage 3: WAF -->
+                            <div style="display: inline-flex; flex-direction: column; align-items: center; gap: 1rem; vertical-align: top; white-space: normal; width: 200px;">
+                                <div style="font-size: 0.9rem; font-weight: 700; color: #BD0816; text-transform: uppercase;">STAGE 3</div>
+                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="120" height="120" style="filter: drop-shadow(0 4px 12px rgba(189,8,22,0.3));">
+                                    <use xlink:href="#aws-waf" width="120" height="120"/>
+                                </svg>
+                                <div style="text-align: center;">
+                                    <div style="font-size: 1.1rem; font-weight: 700; color: var(--text-primary); margin-bottom: 0.25rem;">AWS WAF</div>
+                                    <div style="font-size: 0.85rem; color: var(--text-secondary);">Web Firewall</div>
+                                    <div style="font-size: 0.75rem; color: var(--text-secondary); margin-top: 0.5rem;">✓ DDoS Protection</div>
+                                </div>
+                            </div>
+
+                            <!-- Arrow -->
+                            <div style="font-size: 3rem; color: var(--accent); animation: pulse 2s ease-in-out infinite; animation-delay: 0.6s;">→</div>
+
+                            <!-- Stage 4: CloudFront -->
+                            <div style="display: inline-flex; flex-direction: column; align-items: center; gap: 1rem; vertical-align: top; white-space: normal; width: 200px;">
+                                <div style="font-size: 0.9rem; font-weight: 700; color: var(--accent); text-transform: uppercase;">STAGE 4</div>
+                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="120" height="120" style="filter: drop-shadow(0 4px 12px rgba(77,39,168,0.3));">
+                                    <use xlink:href="#aws-cloudfront" width="120" height="120"/>
+                                </svg>
+                                <div style="text-align: center;">
+                                    <div style="font-size: 1.1rem; font-weight: 700; color: var(--text-primary); margin-bottom: 0.25rem;">CloudFront</div>
+                                    <div style="font-size: 0.85rem; color: var(--text-secondary);">CDN - 225+ locations</div>
+                                    <div style="font-size: 0.75rem; color: var(--text-secondary); margin-top: 0.5rem;">✓ 60% load reduction</div>
+                                </div>
+                            </div>
+
+                            <!-- Arrow -->
+                            <div style="font-size: 3rem; color: var(--accent); animation: pulse 2s ease-in-out infinite; animation-delay: 0.9s;">→</div>
+
+                            <!-- Stage 5: ALB -->
+                            <div style="display: inline-flex; flex-direction: column; align-items: center; gap: 1rem; vertical-align: top; white-space: normal; width: 200px;">
+                                <div style="font-size: 0.9rem; font-weight: 700; color: var(--accent); text-transform: uppercase;">STAGE 5</div>
+                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="120" height="120" style="filter: drop-shadow(0 4px 12px rgba(77,39,170,0.3));">
+                                    <use xlink:href="#aws-alb" width="120" height="120"/>
+                                </svg>
+                                <div style="text-align: center;">
+                                    <div style="font-size: 1.1rem; font-weight: 700; color: var(--text-primary); margin-bottom: 0.25rem;">Load Balancer</div>
+                                    <div style="font-size: 0.85rem; color: var(--text-secondary);">ALB - Layer 7</div>
+                                    <div style="font-size: 0.75rem; color: var(--text-secondary); margin-top: 0.5rem;">✓ Health checks</div>
+                                </div>
+                            </div>
+
+                            <!-- Arrow -->
+                            <div style="font-size: 3rem; color: #10b981; animation: pulse 2s ease-in-out infinite; animation-delay: 1.2s;">→</div>
+
+                            <!-- Stage 6: Auto Scaling + ECS -->
+                            <div style="display: inline-flex; flex-direction: column; align-items: center; gap: 1rem; vertical-align: top; white-space: normal; width: 280px; padding: 1.5rem; background: var(--card-bg); border-radius: 12px; border: 3px dashed var(--accent);">
+                                <div style="font-size: 0.9rem; font-weight: 700; color: var(--accent); text-transform: uppercase;">STAGE 6 - AUTO SCALING</div>
+                                <div style="display: flex; gap: 1rem; align-items: center; justify-content: center;">
+                                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="80" height="80" style="filter: drop-shadow(0 4px 12px rgba(176,8,77,0.3));">
+                                        <use xlink:href="#aws-auto-scaling" width="80" height="80"/>
+                                    </svg>
+                                    <div style="font-size: 2rem; color: var(--text-secondary);">+</div>
+                                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="80" height="80" style="filter: drop-shadow(0 4px 12px rgba(200,81,27,0.3));">
+                                        <use xlink:href="#aws-ecs-fargate" width="80" height="80"/>
+                                    </svg>
+                                </div>
+                                <div style="text-align: center;">
+                                    <div style="font-size: 1.1rem; font-weight: 700; color: var(--text-primary); margin-bottom: 0.25rem;">ECS Fargate Containers</div>
+                                    <div style="font-size: 0.85rem; color: var(--text-secondary);">Serverless • Auto-scales 2-10</div>
+                                    <div style="font-size: 0.75rem; color: #10b981; margin-top: 0.5rem;">● 4 Running | ● 6 Available</div>
+                                    <div style="font-size: 0.75rem; color: var(--text-secondary); margin-top: 0.25rem;">CPU &gt; 70% → Scale Up</div>
+                                </div>
+                            </div>
+
+                            <!-- Arrow to Data Layer -->
+                            <div style="font-size: 3rem; color: #527FFF; animation: pulse 2s ease-in-out infinite; animation-delay: 1.5s;">→</div>
+
+                            <!-- Stage 7: Data Layer (RDS + ElastiCache) -->
+                            <div style="display: inline-flex; flex-direction: column; align-items: center; gap: 1.5rem; vertical-align: top; white-space: normal; width: 250px; padding: 1.5rem; background: var(--card-bg); border-radius: 12px;">
+                                <div style="font-size: 0.9rem; font-weight: 700; color: var(--accent); text-transform: uppercase;">STAGE 7 - DATA LAYER</div>
+
+                                <!-- RDS -->
+                                <div style="display: flex; flex-direction: column; align-items: center; gap: 0.5rem;">
+                                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="90" height="90" style="filter: drop-shadow(0 4px 12px rgba(46,39,173,0.3));">
+                                        <use xlink:href="#aws-rds" width="90" height="90"/>
+                                    </svg>
+                                    <div style="text-align: center;">
+                                        <div style="font-size: 1rem; font-weight: 700; color: var(--text-primary);">RDS PostgreSQL</div>
+                                        <div style="font-size: 0.75rem; color: var(--text-secondary);">Multi-AZ • Auto-backup</div>
+                                    </div>
+                                </div>
+
+                                <div style="height: 1px; width: 100%; background: var(--border);"></div>
+
+                                <!-- ElastiCache -->
+                                <div style="display: flex; flex-direction: column; align-items: center; gap: 0.5rem;">
+                                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="90" height="90" style="filter: drop-shadow(0 4px 12px rgba(46,39,173,0.3));">
+                                        <use xlink:href="#aws-elasticache" width="90" height="90"/>
+                                    </svg>
+                                    <div style="text-align: center;">
+                                        <div style="font-size: 1rem; font-weight: 700; color: var(--text-primary);">ElastiCache Redis</div>
+                                        <div style="font-size: 0.75rem; color: var(--text-secondary);">Cache • &lt;5ms latency</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Arrow to Storage -->
+                            <div style="font-size: 3rem; color: #569A31; animation: pulse 2s ease-in-out infinite; animation-delay: 1.8s;">→</div>
+
+                            <!-- Stage 8: Storage (S3 + Lambda) -->
+                            <div style="display: inline-flex; flex-direction: column; align-items: center; gap: 1.5rem; vertical-align: top; white-space: normal; width: 250px; padding: 1.5rem; background: var(--card-bg); border-radius: 12px;">
+                                <div style="font-size: 0.9rem; font-weight: 700; color: var(--accent); text-transform: uppercase;">STAGE 8 - STORAGE</div>
+
+                                <!-- S3 -->
+                                <div style="display: flex; flex-direction: column; align-items: center; gap: 0.5rem;">
+                                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="90" height="90" style="filter: drop-shadow(0 4px 12px rgba(27,102,15,0.3));">
+                                        <use xlink:href="#aws-s3" width="90" height="90"/>
+                                    </svg>
+                                    <div style="text-align: center;">
+                                        <div style="font-size: 1rem; font-weight: 700; color: var(--text-primary);">Amazon S3</div>
+                                        <div style="font-size: 0.75rem; color: var(--text-secondary);">Object Storage • 99.999999999% durability</div>
+                                    </div>
+                                </div>
+
+                                <div style="height: 1px; width: 100%; background: var(--border);"></div>
+
+                                <!-- Lambda -->
+                                <div style="display: flex; flex-direction: column; align-items: center; gap: 0.5rem;">
+                                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="90" height="90" style="filter: drop-shadow(0 4px 12px rgba(200,81,27,0.3));">
+                                        <use xlink:href="#aws-lambda" width="90" height="90"/>
+                                    </svg>
+                                    <div style="text-align: center;">
+                                        <div style="font-size: 1rem; font-weight: 700; color: var(--text-primary);">AWS Lambda</div>
+                                        <div style="font-size: 0.75rem; color: var(--text-secondary);">Serverless • Event-driven</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Arrow to Monitoring -->
+                            <div style="font-size: 3rem; color: #FF4F8B; animation: pulse 2s ease-in-out infinite; animation-delay: 2.1s;">→</div>
+
+                            <!-- Stage 9: Monitoring -->
+                            <div style="display: inline-flex; flex-direction: column; align-items: center; gap: 1rem; vertical-align: top; white-space: normal; width: 220px;">
+                                <div style="font-size: 0.9rem; font-weight: 700; color: var(--accent); text-transform: uppercase;">STAGE 9</div>
+                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="120" height="120" style="filter: drop-shadow(0 4px 12px rgba(176,8,77,0.3));">
+                                    <use xlink:href="#aws-cloudwatch" width="120" height="120"/>
+                                </svg>
+                                <div style="text-align: center;">
+                                    <div style="font-size: 1.1rem; font-weight: 700; color: var(--text-primary); margin-bottom: 0.25rem;">CloudWatch</div>
+                                    <div style="font-size: 0.85rem; color: var(--text-secondary);">Monitoring & Alerts</div>
+                                    <div style="font-size: 0.75rem; color: var(--text-secondary); margin-top: 0.5rem;">✓ Real-time metrics</div>
+                                    <div style="font-size: 0.75rem; color: var(--text-secondary);">✓ Custom dashboards</div>
+                                </div>
+                            </div>
+
                         </div>
+                    </div>
 
-                        <div class="arch-stats" style="margin-top: 1.5rem;">
-                            <div class="stat-item">
-                                <span class="stat-value">99.99%</span>
-                                <span class="stat-label">Uptime SLA</span>
-                            </div>
-                            <div class="stat-item">
-                                <span class="stat-value">&lt;100ms</span>
-                                <span class="stat-label">Response Time</span>
-                            </div>
-                            <div class="stat-item">
-                                <span class="stat-value">10K+</span>
-                                <span class="stat-label">Requests/sec</span>
-                            </div>
-                            <div class="stat-item">
-                                <span class="stat-value">2-10</span>
-                                <span class="stat-label">Auto Scaling</span>
-                            </div>
-                            <div class="stat-item">
-                                <span class="stat-value">Multi-AZ</span>
-                                <span class="stat-label">High Availability</span>
-                            </div>
-                            <div class="stat-item">
-                                <span class="stat-value">Real-time</span>
-                                <span class="stat-label">Monitoring</span>
-                            </div>
+                    <!-- Architecture Stats -->
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1rem; margin-top: 2rem; padding: 2rem; background: var(--card-bg); border-radius: 12px; border: 2px solid var(--border);">
+                        <div style="text-align: center;">
+                            <div style="font-size: 1.8rem; font-weight: 700; color: var(--accent);">99.99%</div>
+                            <div style="font-size: 0.85rem; color: var(--text-secondary); margin-top: 0.25rem;">Uptime SLA</div>
+                        </div>
+                        <div style="text-align: center;">
+                            <div style="font-size: 1.8rem; font-weight: 700; color: var(--accent);">&lt;100ms</div>
+                            <div style="font-size: 0.85rem; color: var(--text-secondary); margin-top: 0.25rem;">Response Time</div>
+                        </div>
+                        <div style="text-align: center;">
+                            <div style="font-size: 1.8rem; font-weight: 700; color: var(--accent);">10K+</div>
+                            <div style="font-size: 0.85rem; color: var(--text-secondary); margin-top: 0.25rem;">Requests/sec</div>
+                        </div>
+                        <div style="text-align: center;">
+                            <div style="font-size: 1.8rem; font-weight: 700; color: var(--accent);">2-10</div>
+                            <div style="font-size: 0.85rem; color: var(--text-secondary); margin-top: 0.25rem;">Auto Scaling</div>
+                        </div>
+                        <div style="text-align: center;">
+                            <div style="font-size: 1.8rem; font-weight: 700; color: var(--accent);">Multi-AZ</div>
+                            <div style="font-size: 0.85rem; color: var(--text-secondary); margin-top: 0.25rem;">High Availability</div>
+                        </div>
+                        <div style="text-align: center;">
+                            <div style="font-size: 1.8rem; font-weight: 700; color: var(--accent);">Real-time</div>
+                            <div style="font-size: 0.85rem; color: var(--text-secondary); margin-top: 0.25rem;">Monitoring</div>
                         </div>
                     </div>
                 </div>
@@ -2953,7 +2969,7 @@
                                     <span class="skill-percentage">95%</span>
                                 </div>
                                 <div class="skill-bar-track">
-                                    <div class="skill-bar-fill" data-percentage="95" style="width: 0%; background: linear-gradient(90deg, #61DAFB, #0088CC);"></div>
+                                    <div class="skill-bar-fill" data-percentage="95" style="width: 95%; background: linear-gradient(90deg, #61DAFB, #0088CC);"></div>
                                 </div>
                             </div>
                             <div class="skill-bar-item">
@@ -2962,7 +2978,7 @@
                                     <span class="skill-percentage">90%</span>
                                 </div>
                                 <div class="skill-bar-track">
-                                    <div class="skill-bar-fill" data-percentage="90" style="width: 0%; background: linear-gradient(90deg, #3178C6, #235A97);"></div>
+                                    <div class="skill-bar-fill" data-percentage="90" style="width: 90%; background: linear-gradient(90deg, #3178C6, #235A97);"></div>
                                 </div>
                             </div>
                             <div class="skill-bar-item">
@@ -2971,7 +2987,7 @@
                                     <span class="skill-percentage">85%</span>
                                 </div>
                                 <div class="skill-bar-track">
-                                    <div class="skill-bar-fill" data-percentage="85" style="width: 0%; background: linear-gradient(90deg, #42B883, #35495E);"></div>
+                                    <div class="skill-bar-fill" data-percentage="85" style="width: 85%; background: linear-gradient(90deg, #42B883, #35495E);"></div>
                                 </div>
                             </div>
                         </div>
@@ -2986,7 +3002,7 @@
                                     <span class="skill-percentage">95%</span>
                                 </div>
                                 <div class="skill-bar-track">
-                                    <div class="skill-bar-fill" data-percentage="95" style="width: 0%; background: linear-gradient(90deg, #339933, #5FA04E);"></div>
+                                    <div class="skill-bar-fill" data-percentage="95" style="width: 95%; background: linear-gradient(90deg, #339933, #5FA04E);"></div>
                                 </div>
                             </div>
                             <div class="skill-bar-item">
@@ -2995,7 +3011,7 @@
                                     <span class="skill-percentage">90%</span>
                                 </div>
                                 <div class="skill-bar-track">
-                                    <div class="skill-bar-fill" data-percentage="90" style="width: 0%; background: linear-gradient(90deg, #3776AB, #FFD43B);"></div>
+                                    <div class="skill-bar-fill" data-percentage="90" style="width: 90%; background: linear-gradient(90deg, #3776AB, #FFD43B);"></div>
                                 </div>
                             </div>
                             <div class="skill-bar-item">
@@ -3004,7 +3020,7 @@
                                     <span class="skill-percentage">92%</span>
                                 </div>
                                 <div class="skill-bar-track">
-                                    <div class="skill-bar-fill" data-percentage="92" style="width: 0%; background: linear-gradient(90deg, #E10098, #C92786);"></div>
+                                    <div class="skill-bar-fill" data-percentage="92" style="width: 92%; background: linear-gradient(90deg, #E10098, #C92786);"></div>
                                 </div>
                             </div>
                         </div>
@@ -3019,7 +3035,7 @@
                                     <span class="skill-percentage">93%</span>
                                 </div>
                                 <div class="skill-bar-track">
-                                    <div class="skill-bar-fill" data-percentage="93" style="width: 0%; background: linear-gradient(90deg, #FF9900, #FF6600);"></div>
+                                    <div class="skill-bar-fill" data-percentage="93" style="width: 93%; background: linear-gradient(90deg, #FF9900, #FF6600);"></div>
                                 </div>
                             </div>
                             <div class="skill-bar-item">
@@ -3028,7 +3044,7 @@
                                     <span class="skill-percentage">88%</span>
                                 </div>
                                 <div class="skill-bar-track">
-                                    <div class="skill-bar-fill" data-percentage="88" style="width: 0%; background: linear-gradient(90deg, #2496ED, #326CE5);"></div>
+                                    <div class="skill-bar-fill" data-percentage="88" style="width: 88%; background: linear-gradient(90deg, #2496ED, #326CE5);"></div>
                                 </div>
                             </div>
                             <div class="skill-bar-item">
@@ -3052,7 +3068,7 @@
                                     <span class="skill-percentage">92%</span>
                                 </div>
                                 <div class="skill-bar-track">
-                                    <div class="skill-bar-fill" data-percentage="92" style="width: 0%; background: linear-gradient(90deg, #47A248, #4DB33D);"></div>
+                                    <div class="skill-bar-fill" data-percentage="92" style="width: 92%; background: linear-gradient(90deg, #47A248, #4DB33D);"></div>
                                 </div>
                             </div>
                             <div class="skill-bar-item">
@@ -3070,7 +3086,7 @@
                                     <span class="skill-percentage">87%</span>
                                 </div>
                                 <div class="skill-bar-track">
-                                    <div class="skill-bar-fill" data-percentage="87" style="width: 0%; background: linear-gradient(90deg, #DC382D, #527FFF);"></div>
+                                    <div class="skill-bar-fill" data-percentage="87" style="width: 87%; background: linear-gradient(90deg, #DC382D, #527FFF);"></div>
                                 </div>
                             </div>
                         </div>
@@ -4041,7 +4057,19 @@ if (skillCanvas) {
 }
 
 
+    // AWS Architecture: Vertical Scroll -> Horizontal Scroll
+    const awsFlowContainer = document.querySelector('.aws-horizontal-flow');
+    if (awsFlowContainer) {
+        awsFlowContainer.addEventListener('wheel', (e) => {
+            // Prevent default vertical scroll
+            e.preventDefault();
 
+            // Convert vertical scroll (deltaY) to horizontal scroll
+            // Multiply by a factor for smoother scrolling
+            const scrollAmount = e.deltaY * 1.5;
+            awsFlowContainer.scrollLeft += scrollAmount;
+        }, { passive: false }); // passive: false allows preventDefault()
+    }
 
                 // Form Submission
         document.getElementById('contactForm').addEventListener('submit', (e) => {
